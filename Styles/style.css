@@ -1,0 +1,473 @@
+:root {
+  --primary: #b8860b;
+  --primary-light: #d4a820;
+  --primary-dark: #8b6508;
+  --accent: #c0392b;
+  --bg-main: #f5f0e8;
+  --bg-section: #eae6dc;
+  --bg-dark: #15130f;
+  --bg-card: #ffffff;
+  --text-dark: #15130f;
+  --text-mid: #4a4536;
+  --font-body: "Tajawal", sans-serif;
+  --bs-body-font-family: var(--font-body);
+  --bs-body-color: var(--text-mid);
+  --bs-body-bg: var(--bg-main);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  overflow-x: hidden;
+  font-weight: 500;
+}
+
+.text-accent {
+  color: var(--primary) !important;}
+
+  .bg-custom-dark {
+  background-color: var(--bg-dark) !important;
+}
+.bg-custom-section {
+  background-color: var(--bg-section) !important;
+}
+
+/* --- النافبار (Navbar) --- */
+.navbar {
+  transition: all 0.4s ease;
+  background: transparent;
+  padding: 20px 0;
+  z-index: 1000;
+}
+
+.navbar.scrolled {
+  background: rgba(21, 19, 15, 0.95);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 15px 0;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-weight: 600;
+  margin: 0 10px;
+  position: relative;
+  transition: 0.3s;
+  font-size: 1.05rem;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary-light) !important;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  right: 0;
+  background-color: var(--primary);
+  transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.logo-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 5px 15px rgba(184, 134, 11, 0.4);
+}
+
+/* --- الأزرار --- */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border: none;
+  color: white;
+  font-weight: 700;
+  padding: 14px 35px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(184, 134, 11, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(184, 134, 11, 0.5);
+  color: white;
+}
+
+.btn-outline-light {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 50px;
+  padding: 12px 30px;
+  font-weight: 600;
+}
+
+.btn-outline-light:hover {
+  border-color: var(--primary-light);
+  background: transparent;
+  color: var(--primary-light);
+  transform: translateY(-3px);
+}
+
+/* --- Hero Section (التصميم الجديد مع الصورة) --- */
+#hero {
+  min-height: 100vh;
+  position: relative;
+  background: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  padding-top: 100px;
+  overflow: hidden;
+}
+
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
+  background-image: url("./Photos/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  opacity: 0.7; /* تظليل الصورة */
+}
+
+/* طبقة التدرج اللوني فوق الصورة */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(21, 19, 15, 0.089), var(--bg-dark));
+  z-index: 1;
+}
+
+/* طبقة النقوش (Pattern) */
+.hero-bg-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    rgba(184, 134, 11, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 30px 30px;
+  pointer-events: none;
+}
+
+.hero-shape {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(184, 134, 11, 0.15);
+  z-index: 2;
+  animation: pulse 8s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* --- Section 3: Services (التعديل الكامل للكروت) --- */
+.service-card {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: 20px;
+  overflow: hidden;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* حاوية الصورة */
+.card-img-wrapper {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+/* محتوى الكارت */
+.card-body-padding {
+  padding: 30px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background: #fff;
+  position: relative;
+}
+
+/* أيقونة فوق الصورة */
+.card-icon-badge {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+  border: 4px solid #fff;
+}
+
+/* تأثير الهوفر */
+.service-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 20px 40px rgba(184, 134, 11, 0.15);
+}
+
+.service-card:hover .card-img-wrapper img {
+  transform: scale(1.1); /* تكبير الصورة */
+}
+
+.service-card:hover .card-icon-badge {
+  transform: translateX(-50%) rotateY(180deg);
+  background: var(--primary-light);
+}
+
+.service-card h5 {
+  color: var(--text-dark);
+  font-weight: 800;
+  margin-top: 10px;
+  font-family: var(--font-heading);
+  transition: color 0.3s;
+}
+
+.service-card:hover h5 {
+  color: var(--primary);
+}
+
+.service-card p {
+  color: var(--text-mid);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* --- كروت المشاريع (تحسين) --- */
+
+
+/* --- صناديق "لماذا نحن" --- */
+.why-box {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  padding: 30px;
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+}
+.why-box:hover {
+  transform: translateX(-10px);
+  box-shadow: -5px 10px 30px rgba(0, 0, 0, 0.05);
+  border-right: 5px solid var(--primary);
+}
+.why-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--bg-section), #fff);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+  transition: 0.4s;
+}
+.why-box:hover .why-icon {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  transform: rotate(360deg);
+}
+
+/* --- صناديق الإحصائيات (Glass Effect) --- */
+.stat-box {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 35px 20px;
+  text-align: center;
+  transition: 0.3s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.stat-box:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--primary-light);
+  transform: translateY(-5px);
+}
+.stat-box i {
+  color: var(--primary-light);
+  margin-bottom: 15px;
+  font-size: 2rem;
+}
+
+/* --- تنسيقات الأقسام --- */
+section {
+  padding: 100px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.section-tag {
+  color: var(--primary);
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  display: inline-block;
+  position: relative;
+}
+.section-tag::after {
+  content: "";
+  width: 40px;
+  height: 2px;
+  background: var(--primary);
+  position: absolute;
+  bottom: -5px;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  color: var(--text-dark);
+  line-height: 1.3;
+  margin-bottom: 50px;
+}
+
+/* --- Contact Section & Map --- */
+.map-container {
+  height: 450px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 5px solid rgba(255, 255, 255, 0.1);
+}
+.contact-info-box {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --- Footer --- */
+footer {
+  background: #0b0a07;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 60px 0 30px;
+}
+.footer-logo-text {
+  font-family: var(--font-heading);
+  color: white;
+  font-weight: 800;
+}
+.footer-link {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: 0.3s;
+  display: block;
+  padding: 5px 0;
+}
+.footer-link:hover {
+  color: var(--primary-light);
+  transform: translateX(-5px);
+}
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 40px;
+  padding-top: 20px;
+}
+
+/* --- Responsive Queries --- */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background: rgba(21, 19, 15, 0.98);
+    padding: 30px 20px;
+    border-radius: 0 0 20px 20px;
+    margin-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .nav-link {
+    font-size: 1.1rem;
+    padding: 10px 0;
+  }
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .why-box {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .card-img-wrapper {
+    height: 200px;
+  }
+}
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  section {
+    padding: 60px 0;
+  }
+  .btn-primary,
+  .btn-outline-light {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

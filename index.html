@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حول العمران للمقاولات العامة</title>
+    <!-- خطوط جوجل (Cairo & Tajawal) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Bootstrap 5 RTL -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+<link rel="stylesheet" href="./Styles/style.css">
+  </head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="100">
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-3 text-decoration-none" href="#">
+                <div class="logo-icon"><i class="fas fa-building-columns"></i></div>
+                <div class="d-flex flex-column">
+                    <strong class="footer-logo-text fs-5 mb-0">حول العمران</strong>
+                    <small class="text-warning" style="font-size: 9px; letter-spacing: 2px; font-weight: 700;">للمقاولات والإنشاءات</small>
+                </div>
+            </a>
+            <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars fs-2"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#hero">الرئيسية</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">من نحن</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">أعمالنا</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#artical">المقال</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#why">لماذا نحن</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="#contact">تواصل معنا</a></li>
+                </ul>
+                <div class="d-flex ms-lg-3 mt-3 mt-lg-0 justify-content-center">
+                    <a href="tel:966544425040" class="btn btn-primary btn-sm">اطلب عرض سعر</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+<!-- Hero Section=============== -->
+    <section id="hero">
+        <!-- طبقة صورة الخلفية -->
+        <div class="hero-bg-image"></div>
+        <!-- طبقة التدرج اللوني -->
+        <div class="hero-overlay"></div>
+        <!-- طبقة النقوش -->
+        <div class="hero-bg-pattern"></div>
+        <!-- الأشكال المتحركة -->
+        <div class="hero-shape" style="width: 600px; height: 600px; top: -200px; left: -200px;"></div>
+        <div class="hero-shape" style="width: 400px; height: 400px; bottom: -100px; right: -100px; animation-delay: 3s;"></div>
+        
+        <div class="container hero-content">
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-6">
+                    <span class="badge rounded-pill text-warning border border-warning border-opacity-50 mb-3 px-4 py-2 bg-opacity-10 bg-warning">
+                        <i class="fas fa-star ms-2"></i> رائدة في قطاع الإنشاءات بمكة
+                    </span>
+                    <h1 class="display-3 fw-bold text-white mb-4" style="font-family: var(--font-heading)">
+                        نبني <span class="text-warning">المستقبل</span><br>بأيدٍ سعودية
+                    </h1>
+                    <p class="lead text-white-50 mb-5" style="font-size: 1.2rem;">
+                        شركة حول العمران للمقاولات — شريكك الموثوق لتحقيق التميز الهندسي. نقدم حلولاً متكاملة للبناء والتشييد بأعلى معايير الجودة.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="tel:966544425040" class="btn btn-primary btn-lg"><i class="fas fa-phone-alt ms-2"></i> اتصل بنا الآن</a>
+                        <a href="#services" class="btn btn-outline-light btn-lg"><i class="fas fa-arrow-left ms-2"></i> خدماتنا</a>
+                    </div>
+                </div>
+                
+                <!-- إحصائيات Hero -->
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <i class="fas fa-hard-hat"></i>
+                                <div class="h3 text-white fw-bold mt-2">+500</div>
+                                <div class="small text-white-50">مشروع منجز</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box" style="margin-top: 30px;">
+                                <i class="fas fa-calendar-check"></i>
+                                <div class="h3 text-white fw-bold mt-2">+15</div>
+                                <div class="small text-white-50">سنة خبرة</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box" style="margin-top: -30px;">
+    <i class="fas fa-users"></i>
+                                <div class="h3 text-white fw-bold mt-2">+200</div>
+                                <div class="small text-white-50">عميل راضٍ</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <i class="fas fa-medal"></i>
+                                <div class="h3 text-white fw-bold mt-2">100%</div>
+                                <div class="small text-white-50">جودة تنفيذ</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- About Section=============== -->
+
+    <section id="about" class="bg-custom-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <div class="position-relative">
+<div class="rounded-4 overflow-hidden d-flex align-items-center justify-content-center" style="height: 450px; width: 100%; border: 1px solid var(--primary);">
+    
+    <img src="./Styles/Photos/second.jpg" 
+         alt="صورة عن الشركة" 
+         style="width: 100%; height: 100%; object-fit: cover;">
+
+</div>                            
+                        <div class="position-absolute bottom-0 start-0 m-4 bg-warning text-dark p-4 rounded-3 shadow-lg" style="width: 150px;">
+                            <div class="h2 mb-0 fw-bold">15+</div>
+                            <small>سنة تميز</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 ps-lg-5">
+                    <span class="section-tag">من نحن</span>
+                    <h2 class="section-title">رؤيتنا <span class="text-accent">تتجاوز</span> البناء</h2>
+                    <p class="text-muted mb-4 fs-5">
+                        شركة <strong>حول العمران للمقاولات</strong> ليست مجرد شركة تنفيذ، بل هي شريك استراتيجي في نهضة المملكة. نؤمن بأن كل طوبة نضعها هي لبنة في مستقبل مشرق.
+                    </p>
+                    <p class="text-muted mb-4">
+                        نجمع بين الإرث العريق للبناء السعودي وأحدث التقنيات العالمية، لضمان منجزات تعانق السماء بجودة لا تضاهى.
+                    </p>
+                    <div class="row g-3 mt-2">
+                        <div class="col-md-6"><div class="d-flex align-items-center gap-3"><i class="fas fa-check-circle text-warning fs-5"></i> <span>ترخيص حكومي معتمد</span></div></div>
+                        <div class="col-md-6"><div class="d-flex align-items-center gap-3"><i class="fas fa-check-circle text-warning fs-5"></i> <span>كادر هندسي سعودي</span></div></div>
+                        <div class="col-md-6"><div class="d-flex align-items-center gap-3"><i class="fas fa-check-circle text-warning fs-5"></i> <span>ضمان شامل على الأعمال</span></div></div>
+                        <div class="col-md-6"><div class="d-flex align-items-center gap-3"><i class="fas fa-check-circle text-warning fs-5"></i> <span>التزام صارم بالمواعيد</span></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES (تم التعديل) ===== -->
+    <section id="services" class="bg-custom-dark">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-tag">خدماتنا</span>
+                <h2 class="section-title text-white">حلول <span class="text-warning">إنشائية</span> شاملة</h2>
+                <p class="text-white-50 mx-auto" style="max-width: 700px;">نقدم مجموعة متكاملة من خدمات المقاولات لتلبية احتياجات القطاع الخاص والحكومي بأعلى كفاءة.</p>
+            </div>
+            
+            <div class="row g-4">
+<div class="row g-4">
+    <!-- خدمة 1 -->
+    <div class="col-md-6 col-lg-4">
+        <div class="service-card">
+            <div class="card-img-wrapper">
+                <img src="/Styles/Photos/1.jpg" alt="أعمال الأساسات">
+            </div>
+            <div class="card-body-padding">
+                <div class="card-icon-badge"><i class="fas fa-layer-group"></i></div>
+                <h5>أعمال الأساسات</h5>
+                <p>تنفيذ الأساسات الإنشائية المتخصصة، الحفر، والردم، وصب الخرسانة المسلحة بمعايير هندسية دقيقة لضمان استقرار المنشآت.</p>
+            </div>
+        </div>
+    </div>
+    <!-- خدمة 2 -->
+    <div class="col-md-6 col-lg-4">
+        <div class="service-card">
+            <div class="card-img-wrapper">
+                <img src="/Styles/Photos/2.jpg" alt="التشطيبات">
+            </div>
+            <div class="card-body-padding">
+                <div class="card-icon-badge"><i class="fas fa-paint-roller"></i></div>
+                <h5>التشطيبات المعمارية</h5>
+                <p>تقديم حلول تشطيبات داخلية وخارجية فاخرة تشمل الدهانات، الأرضيات، والواجهات الحديثة لتعكس هوية المشروع.</p>
+            </div>
+        </div>
+    </div>
+    <!-- خدمة 3 -->
+    <div class="col-md-6 col-lg-4">
+        <div class="service-card">
+            <div class="card-img-wrapper">
+                <img src="/Styles/Photos/3.jpg" alt="البنية التحتية">
+            </div>
+            <div class="card-body-padding">
+                <div class="card-icon-badge"><i class="fas fa-network-wired"></i></div>
+                <h5>البنية التحتية</h5>
+                <p>إنشاء وتطوير شبكات البنية التحتية الشاملة: الطرق، أنظمة الصرف الصحي، وشبكات المياه والكهرباء بكفاءة عالية.</p>
+            </div>
+        </div>
+    </div>
+    <!-- خدمة 4 -->
+    <div class="col-md-6 col-lg-4">
+        <div class="service-card">
+            <div class="card-img-wrapper">
+                <img src="/Styles/Photos/4.jpg" alt="المباني السكنية">
+            </div>
+            <div class="card-body-padding">
+                <div class="card-icon-badge"><i class="fas fa-home"></i></div>
+                <h5>المباني السكنية</h5>
+                <p>بناء الفلل الحديثة والمجمعات السكنية المتكاملة الخدمات، حيث نجمع بين التصميم المعماري الأنيق وجودة التنفيذ الهندسي.</p>
+            </div>
+        </div>
+    </div>
+    <!-- خدمة 5 -->
+    <div class="col-md-6 col-lg-4">
+        <div class="service-card">
+            <div class="card-img-wrapper">
+                <img src="/Styles/Photos/5.jpg" alt="المشاريع التجارية">
+            </div>
+            <div class="card-body-padding">
+                <div class="card-icon-badge"><i class="fas fa-building"></i></div>
+                <h5>المشاريع التجارية</h5>
+                <p>إقامة أبراج المكاتب، المجمعات التجارية، والمنشآت الصناعية بتصاميم عصرية تواكب احتياجات السوق.</p>
+            </div>
+        </div>
+    </div>
+    <!-- خدمة 6 -->
+    <div class="col-md-6 col-lg-4">
+        <div class="service-card">
+            <div class="card-img-wrapper">
+                <img src="/Styles/Photos/6.jpg" alt="الصيانة">
+            </div>
+            <div class="card-body-padding">
+                <div class="card-icon-badge"><i class="fas fa-tools"></i></div>
+                <h5>الصيانة والترميم</h5>
+                <p>تقديم خدمات صيانة دورية شاملة وأعمال ترميم للمنشآت القائمة، لضمان استمراريتها وسلامتها وإطالة عمرها الافتراضي.</p>
+            </div>
+        </div>
+    </div>
+    <!-- خدمة 7 -->
+    <div class="col-md-6 col-lg-4">
+        <div class="service-card">
+            <div class="card-img-wrapper">
+                <img src="/Styles/Photos/7.jpg" alt="الحفريات والردم">
+            </div>
+            <div class="card-body-padding">
+                <div class="card-icon-badge"><i class="fas fa-digging"></i></div>
+                <h5>الحفريات والردم</h5>
+                <p>تنفيذ أعمال الحفر الميكانيكي الكبير، تسوية الأراضي، وردم المواقع بالمعدات الثقيلة بأعلى درجات الأمان والسرعة.</p>
+            </div>
+        </div>
+    </div>
+    <!-- خدمة 8 -->
+    <div class="col-md-6 col-lg-4">
+        <div class="service-card">
+            <div class="card-img-wrapper">
+                <img src="/Styles/Photos/8.jpg" alt="الهياكل المعدنية">
+            </div>
+            <div class="card-body-padding">
+                <div class="card-icon-badge"><i class="fas fa-industry"></i></div>
+                <h5>الهياكل المعدنية</h5>
+                <p>تصميم وتنشاء الهياكل الفولاذية للمصانع، المستودعات، والأسقف المفتوحة، مع الالتزام بمواصفات اللحام والطلاء.</p>
+            </div>
+        </div>
+    </div>
+    <!-- خدمة 9 -->
+    <div class="col-md-6 col-lg-4">
+        <div class="service-card">
+            <div class="card-img-wrapper">
+                <img src="/Styles/Photos/9.jpg" alt="الأعمال الكهربائية">
+            </div>
+            <div class="card-body-padding">
+                <div class="card-icon-badge"><i class="fas fa-bolt"></i></div>
+                <h5>الأعمال الكهربائية (MEP)</h5>
+                <p>تنفيذ التمديدات الكهربائية، وأنظمة الإنارة الداخلية والخارجية، واللوحات التحكم بأحدث المواصفات العالمية.</p>
+            </div>
+        </div>
+    </div>
+    <!-- خدمة 10 -->
+    <div class="col-md-6 col-lg-4">
+        <div class="service-card">
+            <div class="card-img-wrapper">
+                <img src="/Styles/Photos/10.jpg" alt="أعمال الخرسانة">
+            </div>
+            <div class="card-body-padding">
+                <div class="card-icon-badge"><i class="fas fa-cubes"></i></div>
+                <h5>أعمال الخرسانة</h5>
+                <p>صب الخرسانة للأعمدة والأسقف، والاهتمام بدقة نسب الخلطات والمعالجة المائية لضمان قوة تحمل عالية للمنشأة.</p>
+            </div>
+        </div>
+    </div>
+    <!-- خدمة 11 -->
+    <div class="col-md-6 col-lg-4">
+        <div class="service-card">
+            <div class="card-img-wrapper">
+                <img src="/Styles/Photos/11.jpg" alt="تنسيق الحدائق">
+            </div>
+            <div class="card-body-padding">
+                <div class="card-icon-badge"><i class="fas fa-leaf"></i></div>
+                <h5>تنسيق الحدائق</h5>
+                <p>تصميم وتنفيذ المساحات الخضراء، تركيب أنظمة الري الحديثة، وأعمال التبليط الخارجي لإضفاء طابع جمالي.</p>
+            </div>
+        </div>
+    </div>
+    <!-- خدمة 12 -->
+    <div class="col-md-6 col-lg-4">
+        <div class="service-card">
+            <div class="card-img-wrapper">
+                <img src="/Styles/Photos/12.jpg" alt="تبليط الطرق">
+            </div>
+            <div class="card-body-padding">
+                <div class="card-icon-badge"><i class="fas fa-road"></i></div>
+                <h5>تبليط وفرش الأسفلت</h5>
+                <p>تنفيذ طبقات الأسفلت وفرش البلاط الإسمنتي والانترلوك بجودة عالية تتحمل الضغط والأحوال الجوية المختلفة.</p>
+            </div>
+        </div>
+    </div>
+</div>            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+<!-- ===== SECTION: ARTICLE / ABOUT INDUSTRY ===== -->
+<section id="article" class="bg-custom-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- الجانب المصور (يمكنك استبدال الصورة بصورة حقيقية للشركة أو موقع) -->
+            <div class="col-lg-5 mb-5 mb-lg-0">
+                <div class="rounded-4 overflow-hidden shadow-lg position-relative" style="height: 500px; width: 100%;">
+                    <!-- ضع رابط الصورة هنا -->
+                    <img src="./Styles/Photos/hero.jpg" alt="السلامة والجودة" class="w-100 h-100 object-fit-cover">
+                    <!-- شريط ذهبي زخرفي -->
+                    <div class="position-absolute top-0 end-0 bg-warning text-dark p-3 m-4 rounded-3 shadow">
+                        <strong class="d-block fs-5">100%</strong>
+                        <small>التزام بالجودة</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الجانب النصي -->
+            <div class="col-lg-7 pe-lg-5">
+                <span class="section-tag">مقالات ورؤية</span>
+                <h2 class="section-title">المقاولات: <span class="text-accent">صناعة الثقة</span> وبناء المستقبل</h2>
+                
+                <p class="text-muted mb-4 fs-5">
+                    لا يُمكن لأي مجتمع أن يزدهر دون أساس متين من البنية التحتية والإنشاءات. فالمقاولات ليست مجرد طين وإنما هي القاطرة التي تحرك عجلة التنمية الاقتصادية والاجتماعية.
+                </p>
+                
+                <p class="text-muted mb-4">
+                    في هذا السياق، تبرز <strong>شركة حول العمران للمقاولات</strong> كنموذج يحتذى به في السوق السعودي، حيث ننظر إلى كل مشروع على أنه أمانة يجب تأديتها بأعلى درجات الإتقان.
+                </p>
+
+                <div class="highlight-box bg-white p-4 rounded-3 border-end border-4 border-warning mb-4 shadow-sm">
+                    <h5 class="fw-bold text-dark mb-2"><i class="fas fa-shield-alt text-warning ms-2"></i>معايير الثقة والأمان</h5>
+                    <p class="mb-0 text-muted small">
+                        في حول العمران، الثقة ليست مجرد شعار، بل هي ممارسة يومية. نضمن سلامة منشآتنا عبر استخدام أفضل الخامات، ونجعل راحة عملائنا وأمانهم هما القاعدة التي ننطلق منها في كل التزاماتنا.
+                    </p>
+                </div>
+
+                <ul class="list-unstyled row g-3 mt-2">
+                    <li class="col-md-6 d-flex align-items-center gap-2">
+                        <i class="fas fa-check-circle text-warning"></i>
+                        <span>شفافية كاملة في التنفيذ</span>
+                    </li>
+                    <li class="col-md-6 d-flex align-items-center gap-2">
+                        <i class="fas fa-check-circle text-warning"></i>
+                        <span>معايير سلامة عالمية (HSE)</span>
+                    </li>
+                    <li class="col-md-6 d-flex align-items-center gap-2">
+                        <i class="fas fa-check-circle text-warning"></i>
+                        <span>كوادر هندسية معتمدة</span>
+                    </li>
+                    <li class="col-md-6 d-flex align-items-center gap-2">
+                        <i class="fas fa-check-circle text-warning"></i>
+                        <span>ضمان ما بعد التسليم</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- ===== WHY US ===== -->
+    <section id="why">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <span class="section-tag">لماذا تختارنا؟</span>
+                    <h2 class="section-title">معايير <span class="text-accent">الجودة</span> هي أساسنا</h2>
+                    <p class="text-muted mb-4">في عالم المقاولات، التفاصيل هي التي تصنع الفرق. نحن لا نبني فقط، بل نصنع قيمة مضافة لكل مشروع.</p>
+                    
+                    <div class="row g-4">
+                        <div class="col-6">
+                            <div class="why-box">
+                                <div class="why-icon"><i class="fas fa-award"></i></div>
+                                <div class="ms-3">
+                                    <h6 class="fw-bold mb-1">جودة عالمية</h6>
+                                    <p class="small text-muted mb-0">خامات ومواصفات لا تقبل المنافسة.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="why-box">
+                                <div class="why-icon"><i class="fas fa-clock"></i></div>
+                                <div class="ms-3">
+                                    <h6 class="fw-bold mb-1">دقة في المواعيد</h6>
+                                    <p class="small text-muted mb-0">التزام صارم بجداول الزمنية.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="why-box">
+                                <div class="why-icon"><i class="fas fa-hard-hat"></i></div>
+                                <div class="ms-3">
+                                    <h6 class="fw-bold mb-1">سلامة أولًا</h6>
+                                    <p class="small text-muted mb-0">تطبيق صارم لمعايير السلامة.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="why-box">
+                                <div class="why-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                                <div class="ms-3">
+                                    <h6 class="fw-bold mb-1">أسعار تنافسية</h6>
+                                    <p class="small text-muted mb-0">قيمة حقيقية مقابل كل ريال.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="./Styles/Photos/logo.jpeg" alt="Engineer" class="img-fluid rounded-4 shadow-lg" style="opacity: 0.9;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="bg-custom-dark text-white">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5">
+                    <span class="section-tag">تواصل معنا</span>
+                    <h2 class="section-title text-white mb-4">ابدأ مشروعك <span class="text-warning">الآن</span></h2>
+                    
+                    <div class="contact-info-box mb-4">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="bg-warning text-dark rounded-2 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <small class="text-white-50 d-block">رقم الهاتف الأول</small>
+                                <strong class="fs-5 text-white">0544425040</strong>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="bg-warning text-dark rounded-2 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div>
+                                <small class="text-white-50 d-block">رقم الهاتف الثاني</small>
+                                <strong class="fs-5 text-white">0560309065</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="tel:0544425040" class="btn btn-primary"><i class="fas fa-phone-alt ms-2"></i>  اتصل الآن</a>
+                        <a href="tel:0560309065" class="btn btn-primary"><i class="fas fa-phone-alt ms-2"></i>خط الأتصال الثاني</a>
+                    </div>
+                </div>
+               
+                <div class="col-lg-7">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3714.8450182938436!2d39.7990524!3d21.3960062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c21b4c8ddf0765%3A0xa89c894754fb06fe!2z2LTYsdmD2Kkg2YXYtNin2LHZgg!5e0!3m2!1sar!2seg!4v1776951511529!5m2!1sar!2seg" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="row g-4 pb-4">
+                <div class="col-lg-4">
+                    <a href="#" class="d-flex align-items-center gap-3 text-decoration-none mb-3">
+                        <div class="logo-icon"><i class="fas fa-building-columns"></i></div>
+                        <div class="d-flex flex-column">
+                            <strong class="footer-logo-text fs-5 mb-0">حول العمران</strong>
+                            <small class="text-warning" style="font-size: 10px; letter-spacing: 2px;">للمقاولات والإنشاءات</small>
+                        </div>
+                    </a>
+                    <p class="text-white-50">
+                        نلتزم بتقديم أعلى مستويات الجودة والاحترافية في مشاريع المقاولات، لبناء مستقبل مزدهر في المملكة العربية السعودية.
+                    </p>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="text-white mb-3 fw-bold">روابط هامة</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#about" class="footer-link"><i class="fas fa-chevron-left small me-2 text-warning"></i> من نحن</a></li>
+                        <li><a href="#services" class="footer-link"><i class="fas fa-chevron-left small me-2 text-warning"></i> الأعمال</a></li>
+                        <li><a href="#article" class="footer-link"><i class="fas fa-chevron-left small me-2 text-warning"></i> المقال</a></li>
+                        <li><a href="#contact" class="footer-link"><i class="fas fa-chevron-left small me-2 text-warning"></i> طلب عرض سعر</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="text-white mb-3 fw-bold">معلومات التواصل</h6>
+                    <ul class="list-unstyled">
+                        <li class="text-white-50 small mb-3"><i class="fas fa-map-marker-alt ms-2 text-warning"></i> الخالدية — الدور الخامس — مكتب 504</li>
+                        <li class="text-white-50 small mb-3"><i class="fas fa-phone ms-2 text-warning"></i> 0544425040</li>
+                        <li class="text-white-50 small"><i class="fas fa-envelope ms-2 text-warning"></i> info@hawalomran.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center footer-bottom">
+    <div class="mb-2">
+        <small class="text-white-50">© 2025 حول العمران للمقاولات — جميع الحقوق محفوظة</small>
+    </div>
+    <div>
+        <small class="text-white-50">
+            تم التصميم والتطوير بواسطة 
+            <a href="https://www.facebook.com/profile.php?id=100090592885243&locale=ar_AR" target="_blank" class="text-warning text-decoration-none fw-bold ms-1" style="transition: 0.3s;">
+                GMTWEB
+            </a>
+        </small>
+    </div>
+</div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+   <script src="./main.js"></script>
+</body>
+</html>
