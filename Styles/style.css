@@ -123,6 +123,14 @@ body {
 @keyframes loaderFill {
   to { width: 100%; }
 }
+.page-loader img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255,255,255,0.15);
+}
 
 /* ===== NAVBAR ===== */
 .navbar {
@@ -437,45 +445,6 @@ body {
 }
 
 /* ===== STAT BOXES ===== */
-.stat-box {
-  background: rgba(255,255,255,0.04);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 20px;
-  padding: 30px 20px;
-  text-align: center;
-  transition: var(--transition);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-.stat-box::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-}
-.stat-box:hover {
-  background: rgba(255,255,255,0.08);
-  border-color: rgba(255,255,255,0.2);
-  transform: translateY(-6px);
-}
-.stat-box i { color: var(--silver); margin-bottom: 12px; font-size: 1.8rem; }
-.stat-num {
-  font-family: var(--font-en);
-  font-size: 2.8rem;
-  font-weight: 900;
-  color: #fff;
-  line-height: 1;
-}
-.stat-suffix { font-size: 1.5rem; color: var(--silver); font-weight: 700; margin-top: -4px; }
-.stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.45); margin-top: 6px; letter-spacing: 0.5px; }
-
 /* ===== SECTIONS ===== */
 section {
   padding: 110px 0;
@@ -940,3 +909,225 @@ html[lang="en"] .why-box:hover { transform: translateX(8px); }
 html[lang="en"] .contact-phone-card:hover { transform: translateX(6px); }
 html[lang="en"] .check-item:hover { transform: translateX(4px); }
 html[lang="en"] .about-badge { left: auto; right: -20px; }
+
+
+ 
+        /* --- تصميم الهيرو الجديد (الجهة اليمنى) --- */
+        .hero-visual-col {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+            perspective: 1000px;
+        }
+
+        .blueprint-card {
+            width: 320px;
+            height: 420px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            border-radius: 20px;
+            position: relative;
+            backdrop-filter: blur(10px);
+            transform-style: preserve-3d;
+            animation: cardFloat 6s ease-in-out infinite;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* خطوط شبكية داخل الكارد */
+        .blueprint-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(197, 160, 89, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(197, 160, 89, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.3;
+            border-radius: 20px;
+            z-index: 0;
+        }
+
+        .bp-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .bp-icon-wrapper {
+            width: 120px;
+            height: 120px;
+            border: 2px dashed var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            animation: spinSlow 20s linear infinite;
+        }
+
+        .bp-icon-wrapper i {
+            font-size: 3rem;
+            color: var(--primary);
+        }
+
+        .bp-title {
+            color: #fff;
+            font-family: 'Almarai', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .bp-subtitle {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* عناصر عائمة حول الكارد */
+        .float-item {
+            position: absolute;
+            background: rgba(30, 34, 41, 0.9);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            z-index: 3;
+        }
+
+        .float-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .float-item span {
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .fi-1 { top: 10%; left: -20px; animation: floatIcon 4s ease-in-out infinite; }
+        .fi-2 { bottom: 20%; right: -20px; animation: floatIcon 5s ease-in-out infinite 1s; }
+        .fi-3 { top: 50%; left: -40px; animation: floatIcon 4.5s ease-in-out infinite 0.5s; }
+
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0) rotateX(5deg); }
+            50% { transform: translateY(-20px) rotateX(0deg); }
+        }
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* --- الأزرار العائمة (Floating Buttons) --- */
+        .floating-actions {
+            position: fixed;
+            bottom: 30px;
+            right: 30px; /* جهة اليمين في اللغة العربية */
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        /* تعديل الموقع عند التحويل للإنجليزي */
+        html[dir="ltr"] .floating-actions {
+            right: auto;
+            left: 30px;
+        }
+
+        .fab-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            border: none;
+            outline: none;
+        }
+
+        .fab-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .fab-btn::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            right: 70px;
+            background: #333;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+        
+        html[dir="ltr"] .fab-btn::after {
+            right: auto;
+            left: 70px;
+        }
+
+        .fab-btn:hover::after {
+            opacity: 1;
+            visibility: visible;
+            right: 65px;
+        }
+        html[dir="ltr"] .fab-btn:hover::after {
+            right: auto;
+            left: 65px;
+        }
+
+        .fab-phone {
+            background: linear-gradient(135deg, #2c3e50, #000000);
+            border: 1px solid #444;
+            font-size: 1.2rem;
+        }
+
+        .fab-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            font-size: 1.6rem;
+        }
+
+        .fab-quote {
+            background: linear-gradient(135deg, #c5a059, #8a6d36);
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 991px) {
+            .hero-visual-col {
+                display: none; 
+            }
+            .floating-actions {
+                bottom: 20px;
+                right: 20px;
+            }
+            html[dir="ltr"] .floating-actions {
+                left: 20px;
+            }
+        }
+    

@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
     <link rel="stylesheet" href="./Styles/style.css">
+    
+    <!-- إضافات CSS الخاصة بالتعديلات الجديدة -->
+   
 </head>
 <body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="100">
 
@@ -20,6 +23,7 @@
 <div class="page-loader" id="pageLoader">
     <div class="loader-inner">
         <div class="loader-logo">
+            <img src="./Styles/Photos/logo.jpeg" alt="Logo"  srcset="">
             <span class="loader-text" data-ar="حول العمران" data-en="Hawal Omran">حول العمران</span>
         </div>
         <div class="loader-bar"><div class="loader-fill"></div></div>
@@ -68,7 +72,7 @@
     <div class="hero-shape" style="width:400px;height:400px;bottom:-100px;right:-100px;animation-delay:3s;"></div>
 
     <div class="container hero-content">
-        <div class="row align-items-center gy-5">
+        <div class="row align-items-center gy-5 ">
             <div class="col-lg-6">
                 <div class="hero-badge reveal-up" data-delay="0">
                     <span class="badge-dot"></span>
@@ -93,42 +97,34 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-6 d-none d-lg-block">
-                <div class="row g-3">
-                    <div class="col-6">
-                        <div class="stat-box reveal-scale" data-delay="100">
-                            <i class="fas fa-hard-hat"></i>
-                            <div class="stat-num" data-target="500">0</div>
-                            <div class="stat-suffix">+</div>
-                            <div class="stat-label" data-ar="مشروع منجز" data-en="Projects Done">مشروع منجز</div>
+           
+            <!-- ===== الجانب الفاضي الجديد (Visual) ===== -->
+            <div class="col-lg-6 hero-visual-col reveal-up" data-delay="200">
+                <div class="blueprint-card">
+                    <div class="bp-content">
+                        <div class="bp-icon-wrapper">
+                            <i class="fas fa-cube"></i>
                         </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="stat-box reveal-scale" data-delay="200" style="margin-top:30px">
-                            <i class="fas fa-calendar-check"></i>
-                            <div class="stat-num" data-target="15">0</div>
-                            <div class="stat-suffix">+</div>
-                            <div class="stat-label" data-ar="سنة خبرة" data-en="Years Experience">سنة خبرة</div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="stat-box reveal-scale" data-delay="300" style="margin-top:-30px">
-                            <i class="fas fa-users"></i>
-                            <div class="stat-num" data-target="200">0</div>
-                            <div class="stat-suffix">+</div>
-                            <div class="stat-label" data-ar="عميل راضٍ" data-en="Happy Clients">عميل راضٍ</div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="stat-box reveal-scale" data-delay="400">
-                            <i class="fas fa-medal"></i>
-                            <div class="stat-num" data-target="100">0</div>
-                            <div class="stat-suffix">%</div>
-                            <div class="stat-label" data-ar="جودة تنفيذ" data-en="Quality Rate">جودة تنفيذ</div>
-                        </div>
+                        <h3 class="bp-title" data-ar="الرؤية الهندسية" data-en="Engineering Vision">الرؤية الهندسية</h3>
+                        <span class="bp-subtitle" data-ar="جودة . أمان . التزام" data-en="Quality . Safety . Commitment">جودة . أمان . التزام</span>
                     </div>
                 </div>
+                
+                <!-- عناصر عائمة تعبر عن القيم -->
+                <div class="float-item fi-1">
+                    <i class="fas fa-drafting-compass"></i>
+                    <span data-ar="دقة التصميم" data-en="Precision Design">دقة التصميم</span>
+                </div>
+                <div class="float-item fi-2">
+                    <i class="fas fa-shield-alt"></i>
+                    <span data-ar="معايير السلامة" data-en="Safety Standards">معايير السلامة</span>
+                </div>
+                <div class="float-item fi-3">
+                    <i class="fas fa-hard-hat"></i>
+                    <span data-ar="كوادر سعودية" data-en="Saudi Staff">كوادر سعودية</span>
+                </div>
             </div>
+
         </div>
     </div>
     <!-- scroll indicator -->
@@ -507,7 +503,7 @@
             <div class="col-lg-4 col-md-6">
                 <h6 class="text-white mb-3 fw-bold" data-ar="معلومات التواصل" data-en="Contact Info">معلومات التواصل</h6>
                 <ul class="list-unstyled">
-                    <li class="text-white-50 small mb-3"><i class="fas fa-map-marker-alt ms-2" style="color:var(--primary)"></i> <span data-ar="الخالدية — الدور الخامس — مكتب 504" data-en="Al-Khalidiyah — 5th Floor — Office 504">الخالدية — الدور الخامس — مكتب 504</span></li>
+                    <li class="text-white-50 small mb-3"><i class="fas fa-map-marker-alt ms-2" style="color:var(--primary)"></i> <span data-ar="مكة المكرمة - الدائري الثالث - الخالدية - برج مشارق - الدور الخامس - مكتب 504" data-en="Makkah Al-Mukarramah - Third Ring Road - Al-Khalidiyah - Mashariq Tower - Fifth Floor - Office 504">مكة المكرمة - الدائري الثالث - الخالدية - برج مشارق - الدور الخامس - مكتب 504</span></li>
                     <li class="text-white-50 small mb-3"><i class="fas fa-phone ms-2" style="color:var(--primary)"></i> 0544425040</li>
                     <li class="text-white-50 small"><i class="fas fa-envelope ms-2" style="color:var(--primary)"></i> info@hawalomran.com</li>
                 </ul>
@@ -526,6 +522,24 @@
         </div>
     </div>
 </footer>
+
+<!-- ===== Floating Buttons Section ===== -->
+<div class="floating-actions">
+    <!-- 1. Call -->
+    <a href="tel:0544425040" class="fab-btn fab-phone" data-tooltip="اتصل بنا">
+        <i class="fas fa-phone-alt"></i>
+    </a>
+    
+    <!-- 2. WhatsApp (Main 40) -->
+    <a href="https://wa.me/966544425040" target="_blank" class="fab-btn fab-whatsapp" data-tooltip="واتساب">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- 3. Quote (WhatsApp Link) -->
+    <a href="https://wa.me/966544425040?text=السلام%20عليكم،%20أود%20طلب%20عرض%20سعر%20لأحد%20مشاريعكم" target="_blank" class="fab-btn fab-quote" data-tooltip="طلب تسعيرة">
+        <i class="fas fa-file-invoice-dollar"></i>
+    </a>
+</div>
 
 <!-- Back to Top -->
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
