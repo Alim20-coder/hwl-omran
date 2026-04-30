@@ -9,9 +9,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
     <link rel="stylesheet" href="./Styles/style.css">
-    
-    <!-- إضافات CSS الخاصة بالتعديلات الجديدة -->
-   
+    <!-- ضع هذا الكود في نهاية الـ head وقبل إغلاقه -->
+<script>
+    // هذا الكود يقرأ اللغة المحفوظة فوراً قبل أن يظهر الموقع
+    // يمنع ظهور الموقع بالعربية ثم تغييره للإنجليزية
+    (function() {
+        const savedLang = localStorage.getItem('hawal_lang') || 'ar';
+        const isEn = savedLang === 'en';
+        
+        // ضبط اتجاه الصفحة فوراً
+        document.documentElement.setAttribute('dir', isEn ? 'ltr' : 'rtl');
+        document.documentElement.setAttribute('lang', savedLang);
+        
+        // تغيير ملف الـ Bootstrap فوراً ليتناسب مع الاتجاه
+        // تأكد أن رابط الـ bootstrap لديه id="bootstrap-css"
+        const bsLink = document.getElementById('bootstrap-css');
+        if (bsLink) {
+            bsLink.href = isEn 
+                ? 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css'
+                : 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css';
+        }
+    })();
+</script>
+       
 </head>
 <body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="100">
 
@@ -36,6 +56,7 @@
         <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="#">
             <img src="./Styles/Photos/logo.jpeg" alt="Logo" class="nav-logo-img">
         </a>
+
         <div class="d-flex align-items-center gap-3 d-lg-none">
             <button class="lang-btn-mobile" id="langBtnMobile" onclick="toggleLang()">EN</button>
             <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -46,8 +67,10 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link active" href="#hero" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
                 <li class="nav-item"><a class="nav-link" href="#about" data-ar="من نحن" data-en="About">من نحن</a></li>
-                <li class="nav-item"><a class="nav-link" href="#services" data-ar="أعمالنا" data-en="Services">أعمالنا</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services" data-ar="خدماتنا" data-en="Services">خدماتنا</a></li>
                 <li class="nav-item"><a class="nav-link" href="#artical" data-ar="المقال" data-en="Article">المقال</a></li>
+                <li class="nav-item"><a class="nav-link" href="./Works/works.html" data-ar="الأعمال" data-en="Projects">الأعمال</a></li>
+
                 <li class="nav-item"><a class="nav-link" href="#why" data-ar="لماذا نحن" data-en="Why Us">لماذا نحن</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a></li>
             </ul>
@@ -81,7 +104,7 @@
                 <h1 class="hero-title reveal-up" data-delay="100">
                     <span class="line-1" data-ar="نبني" data-en="We Build">نبني</span>
                     <span class="line-accent" data-ar="المستقبل" data-en="The Future">المستقبل</span>
-                    <span class="line-3" data-ar="بأيدٍ سعودية" data-en="With Saudi Hands">بأيدٍ سعودية</span>
+                    <span class="line-3" data-ar="بواسطة كادر هندسى متميز" data-en="By a distinguished engineering team">بواسطة كادر هندسى متميز</span>
                 </h1>
                 <p class="hero-desc reveal-up" data-delay="200" data-ar="شركة حول العمران للمقاولات — شريكك الموثوق لتحقيق التميز الهندسي. نقدم حلولاً متكاملة للبناء والتشييد بأعلى معايير الجودة." data-en="Hawal Al-Omran Contracting — your trusted partner for engineering excellence. We provide integrated construction solutions with the highest quality standards.">
                     شركة حول العمران للمقاولات — شريكك الموثوق لتحقيق التميز الهندسي. نقدم حلولاً متكاملة للبناء والتشييد بأعلى معايير الجودة.
@@ -121,7 +144,7 @@
                 </div>
                 <div class="float-item fi-3">
                     <i class="fas fa-hard-hat"></i>
-                    <span data-ar="كوادر سعودية" data-en="Saudi Staff">كوادر سعودية</span>
+                    <span data-ar="كوادر سعودية" data-en="Distinguished engineering staff">كادر هندسى متميز</span>
                 </div>
             </div>
 
@@ -143,7 +166,7 @@
                     <div class="about-img-frame">
                         <img src="./Styles/Photos/logo.jpeg" alt="صورة عن الشركة">
                     </div>
-                    <div class="about-badge">
+                    <div class="about-badge ">
                         <div class="about-badge-num">100%</div>
                         <div class="about-badge-text" data-ar="سنة تميز" data-en="Years of Excellence">ثقة وأمان</div>
                     </div>
@@ -175,8 +198,9 @@
 </section>
 
 <!-- ===== SERVICES ===== -->
-<section id="services" class="bg-custom-dark">
+<section id="services" class="bg-custom-dark py-5">
     <div class="container">
+        <!-- Header -->
         <div class="text-center mb-5 reveal-up">
             <span class="section-tag" data-ar="خدماتنا" data-en="Services">خدماتنا</span>
             <h2 class="section-title text-white">
@@ -186,128 +210,200 @@
             </h2>
             <p class="text-white-50 mx-auto" style="max-width:700px" data-ar="نقدم مجموعة متكاملة من خدمات المقاولات لتلبية احتياجات القطاع الخاص والحكومي بأعلى كفاءة." data-en="We provide a comprehensive range of contracting services to meet private and government sector needs with the highest efficiency.">نقدم مجموعة متكاملة من خدمات المقاولات لتلبية احتياجات القطاع الخاص والحكومي بأعلى كفاءة.</p>
         </div>
+
         <div class="row g-4">
-            <!-- Service cards -->
+            <!-- 1. أعمال الأساسات -->
             <div class="col-md-6 col-lg-4 reveal-card" data-delay="0">
-                <div class="service-card">
-                    <div class="card-img-wrapper"><img src="/Styles/Photos/1.jpg" alt="أعمال الأساسات"><div class="card-img-overlay-line"></div></div>
-                    <div class="card-body-padding">
-                        <div class="card-icon-badge"><i class="fas fa-layer-group"></i></div>
-                        <h5 data-ar="أعمال الأساسات" data-en="Foundation Works">أعمال الأساسات</h5>
-                        <p data-ar="تنفيذ الأساسات الإنشائية المتخصصة، الحفر، والردم، وصب الخرسانة المسلحة بمعايير هندسية دقيقة لضمان استقرار المنشآت." data-en="Specialized structural foundations, excavation, backfill, and reinforced concrete casting with precise engineering standards.">تنفيذ الأساسات الإنشائية المتخصصة، الحفر، والردم، وصب الخرسانة المسلحة بمعايير هندسية دقيقة لضمان استقرار المنشآت.</p>
+                <div class="service-card h-100 d-flex flex-column border-0 shadow-sm bg-white overflow-hidden" style="border-radius: 12px;">
+                    <div class="card-img-wrapper"><img src="/Styles/Photos/1.jpg" class="card-img-top w-100" style="height: 220px; object-fit: cover;" alt="أعمال الأساسات"></div>
+                    <div class="card-body-padding p-4 d-flex flex-column flex-grow-1">
+                        <div class="card-icon-badge mb-3"><i class="fas fa-layer-group text-secondary fs-4"></i></div>
+                        <h5 class="fw-bold mb-3" data-ar="أعمال الأساسات" data-en="Foundation Works">أعمال الأساسات</h5>
+                        <p class="text-muted small mb-4" data-ar="تنفيذ الأساسات الإنشائية المتخصصة، الحفر، والردم، وصب الخرسانة المسلحة." data-en="Specialized structural foundations and reinforced concrete casting.">تنفيذ الأساسات الإنشائية المتخصصة، الحفر، والردم، وصب الخرسانة المسلحة بمعايير هندسية دقيقة لضمان استقرار المنشآت.</p>
+                        <a href="https://wa.me/966544425040?text=السلام%20عليكم،%20أود%20طلب%20سعر%20لمشروعي%20(خدمة%20أعمال%20الأساسات)" class="btn btn-dark mt-auto d-flex align-items-center justify-content-between py-2 px-3 border-0" target="_blank" style="background-color: #1c1c1c;">
+                            <span data-ar="اطلب خدمة" data-en="Order Service">اطلب خدمة</span>
+                            <i class="fas fa-chevron-left small"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+
+            <!-- 2. التشطيبات المعمارية -->
             <div class="col-md-6 col-lg-4 reveal-card" data-delay="50">
-                <div class="service-card">
-                    <div class="card-img-wrapper"><img src="/Styles/Photos/2.jpg" alt="التشطيبات"><div class="card-img-overlay-line"></div></div>
-                    <div class="card-body-padding">
-                        <div class="card-icon-badge"><i class="fas fa-paint-roller"></i></div>
-                        <h5 data-ar="التشطيبات المعمارية" data-en="Architectural Finishes">التشطيبات المعمارية</h5>
-                        <p data-ar="تقديم حلول تشطيبات داخلية وخارجية فاخرة تشمل الدهانات، الأرضيات، والواجهات الحديثة." data-en="Premium interior and exterior finishing solutions including paints, flooring, and modern facades.">تقديم حلول تشطيبات داخلية وخارجية فاخرة تشمل الدهانات، الأرضيات، والواجهات الحديثة.</p>
+                <div class="service-card h-100 d-flex flex-column border-0 shadow-sm bg-white overflow-hidden" style="border-radius: 12px;">
+                    <div class="card-img-wrapper"><img src="/Styles/Photos/2.jpg" class="card-img-top w-100" style="height: 220px; object-fit: cover;" alt="التشطيبات"></div>
+                    <div class="card-body-padding p-4 d-flex flex-column flex-grow-1">
+                        <div class="card-icon-badge mb-3"><i class="fas fa-paint-roller text-secondary fs-4"></i></div>
+                        <h5 class="fw-bold mb-3" data-ar="التشطيبات المعمارية" data-en="Architectural Finishes">التشطيبات المعمارية</h5>
+                        <p class="text-muted small mb-4" data-ar="تقديم حلول تشطيبات داخلية وخارجية فاخرة تشمل الدهانات والأرضيات." data-en="Premium interior and exterior finishing solutions.">تقديم حلول تشطيبات داخلية وخارجية فاخرة تشمل الدهانات، الأرضيات، والواجهات الحديثة.</p>
+                        <a href="https://wa.me/966544425040?text=السلام%20عليكم،%20أود%20طلب%20سعر%20لمشروعي%20(خدمة%20التشطيبات%20المعمارية)" class="btn btn-dark mt-auto d-flex align-items-center justify-content-between py-2 px-3 border-0" target="_blank" style="background-color: #1c1c1c;">
+                            <span data-ar="اطلب خدمة" data-en="Order Service">اطلب خدمة</span>
+                            <i class="fas fa-chevron-left small"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+
+            <!-- 3. البنية التحتية -->
             <div class="col-md-6 col-lg-4 reveal-card" data-delay="100">
-                <div class="service-card">
-                    <div class="card-img-wrapper"><img src="/Styles/Photos/3.jpg" alt="البنية التحتية"><div class="card-img-overlay-line"></div></div>
-                    <div class="card-body-padding">
-                        <div class="card-icon-badge"><i class="fas fa-network-wired"></i></div>
-                        <h5 data-ar="البنية التحتية" data-en="Infrastructure">البنية التحتية</h5>
-                        <p data-ar="إنشاء وتطوير شبكات البنية التحتية الشاملة: الطرق، أنظمة الصرف الصحي، وشبكات المياه والكهرباء." data-en="Construction and development of comprehensive infrastructure networks: roads, sewage systems, water and electricity networks.">إنشاء وتطوير شبكات البنية التحتية الشاملة: الطرق، أنظمة الصرف الصحي، وشبكات المياه والكهرباء.</p>
+                <div class="service-card h-100 d-flex flex-column border-0 shadow-sm bg-white overflow-hidden" style="border-radius: 12px;">
+                    <div class="card-img-wrapper"><img src="/Styles/Photos/3.jpg" class="card-img-top w-100" style="height: 220px; object-fit: cover;" alt="البنية التحتية"></div>
+                    <div class="card-body-padding p-4 d-flex flex-column flex-grow-1">
+                        <div class="card-icon-badge mb-3"><i class="fas fa-network-wired text-secondary fs-4"></i></div>
+                        <h5 class="fw-bold mb-3" data-ar="البنية التحتية" data-en="Infrastructure">البنية التحتية</h5>
+                        <p class="text-muted small mb-4" data-ar="إنشاء وتطوير شبكات البنية التحتية الشاملة: الطرق والصرف والمياه." data-en="Construction of roads, sewage, and water networks.">إنشاء وتطوير شبكات البنية التحتية الشاملة: الطرق، أنظمة الصرف الصحي، وشبكات المياه والكهرباء.</p>
+                        <a href="https://wa.me/966544425040?text=السلام%20عليكم،%20أود%20طلب%20سعر%20لمشروعي%20(خدمة%20البنية%20التحتية)" class="btn btn-dark mt-auto d-flex align-items-center justify-content-between py-2 px-3 border-0" target="_blank" style="background-color: #1c1c1c;">
+                            <span data-ar="اطلب خدمة" data-en="Order Service">اطلب خدمة</span>
+                            <i class="fas fa-chevron-left small"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+
+            <!-- 4. المباني السكنية -->
             <div class="col-md-6 col-lg-4 reveal-card" data-delay="150">
-                <div class="service-card">
-                    <div class="card-img-wrapper"><img src="/Styles/Photos/4.jpg" alt="المباني السكنية"><div class="card-img-overlay-line"></div></div>
-                    <div class="card-body-padding">
-                        <div class="card-icon-badge"><i class="fas fa-home"></i></div>
-                        <h5 data-ar="المباني السكنية" data-en="Residential Buildings">المباني السكنية</h5>
-                        <p data-ar="بناء الفلل الحديثة والمجمعات السكنية المتكاملة الخدمات، حيث نجمع بين التصميم المعماري الأنيق وجودة التنفيذ." data-en="Modern villas and integrated residential complexes, combining elegant architecture with quality execution.">بناء الفلل الحديثة والمجمعات السكنية المتكاملة الخدمات.</p>
+                <div class="service-card h-100 d-flex flex-column border-0 shadow-sm bg-white overflow-hidden" style="border-radius: 12px;">
+                    <div class="card-img-wrapper"><img src="/Styles/Photos/4.jpg" class="card-img-top w-100" style="height: 220px; object-fit: cover;" alt="المباني السكنية"></div>
+                    <div class="card-body-padding p-4 d-flex flex-column flex-grow-1">
+                        <div class="card-icon-badge mb-3"><i class="fas fa-home text-secondary fs-4"></i></div>
+                        <h5 class="fw-bold mb-3" data-ar="المباني السكنية" data-en="Residential Buildings">المباني السكنية</h5>
+                        <p class="text-muted small mb-4" data-ar="بناء الفلل الحديثة والمجمعات السكنية المتكاملة الخدمات." data-en="Modern villas and residential complexes.">بناء الفلل الحديثة والمجمعات السكنية المتكاملة الخدمات، حيث نجمع بين التصميم وجودة التنفيذ.</p>
+                        <a href="https://wa.me/966544425040?text=السلام%20عليكم،%20أود%20طلب%20سعر%20لمشروعي%20(خدمة%20المباني%20السكنية)" class="btn btn-dark mt-auto d-flex align-items-center justify-content-between py-2 px-3 border-0" target="_blank" style="background-color: #1c1c1c;">
+                            <span data-ar="اطلب خدمة" data-en="Order Service">اطلب خدمة</span>
+                            <i class="fas fa-chevron-left small"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+
+            <!-- 5. المشاريع التجارية -->
             <div class="col-md-6 col-lg-4 reveal-card" data-delay="200">
-                <div class="service-card">
-                    <div class="card-img-wrapper"><img src="/Styles/Photos/5.jpg" alt="المشاريع التجارية"><div class="card-img-overlay-line"></div></div>
-                    <div class="card-body-padding">
-                        <div class="card-icon-badge"><i class="fas fa-building"></i></div>
-                        <h5 data-ar="المشاريع التجارية" data-en="Commercial Projects">المشاريع التجارية</h5>
-                        <p data-ar="إقامة أبراج المكاتب، المجمعات التجارية، والمنشآت الصناعية بتصاميم عصرية تواكب احتياجات السوق." data-en="Office towers, commercial complexes, and industrial facilities with modern designs meeting market needs.">إقامة أبراج المكاتب، المجمعات التجارية، والمنشآت الصناعية.</p>
+                <div class="service-card h-100 d-flex flex-column border-0 shadow-sm bg-white overflow-hidden" style="border-radius: 12px;">
+                    <div class="card-img-wrapper"><img src="/Styles/Photos/5.jpg" class="card-img-top w-100" style="height: 220px; object-fit: cover;" alt="المشاريع التجارية"></div>
+                    <div class="card-body-padding p-4 d-flex flex-column flex-grow-1">
+                        <div class="card-icon-badge mb-3"><i class="fas fa-building text-secondary fs-4"></i></div>
+                        <h5 class="fw-bold mb-3" data-ar="المشاريع التجارية" data-en="Commercial Projects">المشاريع التجارية</h5>
+                        <p class="text-muted small mb-4" data-ar="إقامة أبراج المكاتب والمجمعات التجارية والمنشآت الصناعية." data-en="Office towers and commercial complexes.">إقامة أبراج المكاتب، المجمعات التجارية، والمنشآت الصناعية بتصاميم عصرية تواكب احتياجات السوق.</p>
+                        <a href="https://wa.me/966544425040?text=السلام%20عليكم،%20أود%20طلب%20سعر%20لمشروعي%20(خدمة%20المشاريع%20التجارية)" class="btn btn-dark mt-auto d-flex align-items-center justify-content-between py-2 px-3 border-0" target="_blank" style="background-color: #1c1c1c;">
+                            <span data-ar="اطلب خدمة" data-en="Order Service">اطلب خدمة</span>
+                            <i class="fas fa-chevron-left small"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+
+            <!-- 6. الصيانة والترميم -->
             <div class="col-md-6 col-lg-4 reveal-card" data-delay="250">
-                <div class="service-card">
-                    <div class="card-img-wrapper"><img src="/Styles/Photos/6.jpg" alt="الصيانة"><div class="card-img-overlay-line"></div></div>
-                    <div class="card-body-padding">
-                        <div class="card-icon-badge"><i class="fas fa-tools"></i></div>
-                        <h5 data-ar="الصيانة والترميم" data-en="Maintenance & Restoration">الصيانة والترميم</h5>
-                        <p data-ar="تقديم خدمات صيانة دورية شاملة وأعمال ترميم للمنشآت القائمة." data-en="Comprehensive periodic maintenance and restoration works for existing structures.">تقديم خدمات صيانة دورية شاملة وأعمال ترميم للمنشآت القائمة.</p>
+                <div class="service-card h-100 d-flex flex-column border-0 shadow-sm bg-white overflow-hidden" style="border-radius: 12px;">
+                    <div class="card-img-wrapper"><img src="/Styles/Photos/6.jpg" class="card-img-top w-100" style="height: 220px; object-fit: cover;" alt="الصيانة"></div>
+                    <div class="card-body-padding p-4 d-flex flex-column flex-grow-1">
+                        <div class="card-icon-badge mb-3"><i class="fas fa-tools text-secondary fs-4"></i></div>
+                        <h5 class="fw-bold mb-3" data-ar="الصيانة والترميم" data-en="Maintenance & Restoration">الصيانة والترميم</h5>
+                        <p class="text-muted small mb-4" data-ar="تقديم خدمات صيانة دورية شاملة وأعمال ترميم للمنشآت القائمة." data-en="Comprehensive maintenance and restoration works.">تقديم خدمات صيانة دورية شاملة وأعمال ترميم للمنشآت القائمة لضمان استدامتها وسلامتها.</p>
+                        <a href="https://wa.me/966544425040?text=السلام%20عليكم،%20أود%20طلب%20سعر%20لمشروعي%20(خدمة%20الصيانة%20والترميم)" class="btn btn-dark mt-auto d-flex align-items-center justify-content-between py-2 px-3 border-0" target="_blank" style="background-color: #1c1c1c;">
+                            <span data-ar="اطلب خدمة" data-en="Order Service">اطلب خدمة</span>
+                            <i class="fas fa-chevron-left small"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+
+            <!-- 7. الحفريات والردم -->
             <div class="col-md-6 col-lg-4 reveal-card" data-delay="300">
-                <div class="service-card">
-                    <div class="card-img-wrapper"><img src="/Styles/Photos/7.jpg" alt="الحفريات"><div class="card-img-overlay-line"></div></div>
-                    <div class="card-body-padding">
-                        <div class="card-icon-badge"><i class="fas fa-digging"></i></div>
-                        <h5 data-ar="الحفريات والردم" data-en="Excavation & Backfilling">الحفريات والردم</h5>
-                        <p data-ar="تنفيذ أعمال الحفر الميكانيكي الكبير، تسوية الأراضي، وردم المواقع بالمعدات الثقيلة." data-en="Large mechanical excavation, land leveling, and site backfilling with heavy equipment.">تنفيذ أعمال الحفر الميكانيكي الكبير وتسوية الأراضي.</p>
+                <div class="service-card h-100 d-flex flex-column border-0 shadow-sm bg-white overflow-hidden" style="border-radius: 12px;">
+                    <div class="card-img-wrapper"><img src="/Styles/Photos/7.jpg" class="card-img-top w-100" style="height: 220px; object-fit: cover;" alt="الحفريات"></div>
+                    <div class="card-body-padding p-4 d-flex flex-column flex-grow-1">
+                        <div class="card-icon-badge mb-3"><i class="fas fa-digging text-secondary fs-4"></i></div>
+                        <h5 class="fw-bold mb-3" data-ar="الحفريات والردم" data-en="Excavation & Backfilling">الحفريات والردم</h5>
+                        <p class="text-muted small mb-4" data-ar="تنفيذ أعمال الحفر الميكانيكي وتسوية الأراضي بالمعدات الثقيلة." data-en="Large mechanical excavation and land leveling.">تنفيذ أعمال الحفر الميكانيكي الكبير، تسوية الأراضي، وردم المواقع بالمعدات الثقيلة.</p>
+                        <a href="https://wa.me/966544425040?text=السلام%20عليكم،%20أود%20طلب%20سعر%20لمشروعي%20(خدمة%20الحفريات%20والردم)" class="btn btn-dark mt-auto d-flex align-items-center justify-content-between py-2 px-3 border-0" target="_blank" style="background-color: #1c1c1c;">
+                            <span data-ar="اطلب خدمة" data-en="Order Service">اطلب خدمة</span>
+                            <i class="fas fa-chevron-left small"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+
+            <!-- 8. الهياكل المعدنية -->
             <div class="col-md-6 col-lg-4 reveal-card" data-delay="350">
-                <div class="service-card">
-                    <div class="card-img-wrapper"><img src="/Styles/Photos/8.jpg" alt="الهياكل المعدنية"><div class="card-img-overlay-line"></div></div>
-                    <div class="card-body-padding">
-                        <div class="card-icon-badge"><i class="fas fa-industry"></i></div>
-                        <h5 data-ar="الهياكل المعدنية" data-en="Steel Structures">الهياكل المعدنية</h5>
-                        <p data-ar="تصميم وإنشاء الهياكل الفولاذية للمصانع، المستودعات، والأسقف المفتوحة." data-en="Design and construction of steel structures for factories, warehouses, and open roofs.">تصميم وإنشاء الهياكل الفولاذية للمصانع والمستودعات.</p>
+                <div class="service-card h-100 d-flex flex-column border-0 shadow-sm bg-white overflow-hidden" style="border-radius: 12px;">
+                    <div class="card-img-wrapper"><img src="/Styles/Photos/8.jpg" class="card-img-top w-100" style="height: 220px; object-fit: cover;" alt="الهياكل المعدنية"></div>
+                    <div class="card-body-padding p-4 d-flex flex-column flex-grow-1">
+                        <div class="card-icon-badge mb-3"><i class="fas fa-industry text-secondary fs-4"></i></div>
+                        <h5 class="fw-bold mb-3" data-ar="الهياكل المعدنية" data-en="Steel Structures">الهياكل المعدنية</h5>
+                        <p class="text-muted small mb-4" data-ar="تصميم وإنشاء الهياكل الفولاذية للمصانع والمستودعات." data-en="Design and construction of steel structures.">تصميم وإنشاء الهياكل الفولاذية للمصانع، المستودعات، والأسقف المفتوحة بجودة عالية.</p>
+                        <a href="https://wa.me/966544425040?text=السلام%20عليكم،%20أود%20طلب%20سعر%20لمشروعي%20(خدمة%20الهياكل%20المعدنية)" class="btn btn-dark mt-auto d-flex align-items-center justify-content-between py-2 px-3 border-0" target="_blank" style="background-color: #1c1c1c;">
+                            <span data-ar="اطلب خدمة" data-en="Order Service">اطلب خدمة</span>
+                            <i class="fas fa-chevron-left small"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+
+            <!-- 9. الأعمال الكهربائية -->
             <div class="col-md-6 col-lg-4 reveal-card" data-delay="400">
-                <div class="service-card">
-                    <div class="card-img-wrapper"><img src="/Styles/Photos/9.jpg" alt="الأعمال الكهربائية"><div class="card-img-overlay-line"></div></div>
-                    <div class="card-body-padding">
-                        <div class="card-icon-badge"><i class="fas fa-bolt"></i></div>
-                        <h5 data-ar="الأعمال الكهربائية (MEP)" data-en="Electrical Works (MEP)">الأعمال الكهربائية (MEP)</h5>
-                        <p data-ar="تنفيذ التمديدات الكهربائية، وأنظمة الإنارة، واللوحات التحكم بأحدث المواصفات العالمية." data-en="Electrical installations, lighting systems, and control panels to latest international standards.">تنفيذ التمديدات الكهربائية وأنظمة الإنارة.</p>
+                <div class="service-card h-100 d-flex flex-column border-0 shadow-sm bg-white overflow-hidden" style="border-radius: 12px;">
+                    <div class="card-img-wrapper"><img src="/Styles/Photos/9.jpg" class="card-img-top w-100" style="height: 220px; object-fit: cover;" alt="الأعمال الكهربائية"></div>
+                    <div class="card-body-padding p-4 d-flex flex-column flex-grow-1">
+                        <div class="card-icon-badge mb-3"><i class="fas fa-bolt text-secondary fs-4"></i></div>
+                        <h5 class="fw-bold mb-3" data-ar="الأعمال الكهربائية (MEP)" data-en="Electrical Works (MEP)">الأعمال الكهربائية (MEP)</h5>
+                        <p class="text-muted small mb-4" data-ar="تنفيذ التمديدات الكهربائية وأنظمة الإنارة واللوحات التحكم." data-en="Electrical installations and lighting systems.">تنفيذ التمديدات الكهربائية، وأنظمة الإنارة، واللوحات التحكم بأحدث المواصفات العالمية.</p>
+                        <a href="https://wa.me/966544425040?text=السلام%20عليكم،%20أود%20طلب%20سعر%20لمشروعي%20(خدمة%20الأعمال%20الكهربائية)" class="btn btn-dark mt-auto d-flex align-items-center justify-content-between py-2 px-3 border-0" target="_blank" style="background-color: #1c1c1c;">
+                            <span data-ar="اطلب خدمة" data-en="Order Service">اطلب خدمة</span>
+                            <i class="fas fa-chevron-left small"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+
+            <!-- 10. أعمال الخرسانة -->
             <div class="col-md-6 col-lg-4 reveal-card" data-delay="450">
-                <div class="service-card">
-                    <div class="card-img-wrapper"><img src="/Styles/Photos/10.jpg" alt="أعمال الخرسانة"><div class="card-img-overlay-line"></div></div>
-                    <div class="card-body-padding">
-                        <div class="card-icon-badge"><i class="fas fa-cubes"></i></div>
-                        <h5 data-ar="أعمال الخرسانة" data-en="Concrete Works">أعمال الخرسانة</h5>
-                        <p data-ar="صب الخرسانة للأعمدة والأسقف، والاهتمام بدقة نسب الخلطات والمعالجة المائية." data-en="Concrete pouring for columns and ceilings, with precise mix ratios and water treatment.">صب الخرسانة للأعمدة والأسقف بنسب خلطات دقيقة.</p>
+                <div class="service-card h-100 d-flex flex-column border-0 shadow-sm bg-white overflow-hidden" style="border-radius: 12px;">
+                    <div class="card-img-wrapper"><img src="/Styles/Photos/10.jpg" class="card-img-top w-100" style="height: 220px; object-fit: cover;" alt="أعمال الخرسانة"></div>
+                    <div class="card-body-padding p-4 d-flex flex-column flex-grow-1">
+                        <div class="card-icon-badge mb-3"><i class="fas fa-cubes text-secondary fs-4"></i></div>
+                        <h5 class="fw-bold mb-3" data-ar="أعمال الخرسانة" data-en="Concrete Works">أعمال الخرسانة</h5>
+                        <p class="text-muted small mb-4" data-ar="صب الخرسانة للأعمدة والأسقف ودقة نسب الخلطات والمعالجة." data-en="Concrete pouring for columns and ceilings.">صب الخرسانة للأعمدة والأسقف، والاهتمام بدقة نسب الخلطات والمعالجة المائية لضمان المتانة.</p>
+                        <a href="https://wa.me/966544425040?text=السلام%20عليكم،%20أود%20طلب%20سعر%20لمشروعي%20(خدمة%20أعمال%20الخرسانة)" class="btn btn-dark mt-auto d-flex align-items-center justify-content-between py-2 px-3 border-0" target="_blank" style="background-color: #1c1c1c;">
+                            <span data-ar="اطلب خدمة" data-en="Order Service">اطلب خدمة</span>
+                            <i class="fas fa-chevron-left small"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+
+            <!-- 11. تنسيق الحدائق -->
             <div class="col-md-6 col-lg-4 reveal-card" data-delay="500">
-                <div class="service-card">
-                    <div class="card-img-wrapper"><img src="/Styles/Photos/11.jpg" alt="تنسيق الحدائق"><div class="card-img-overlay-line"></div></div>
-                    <div class="card-body-padding">
-                        <div class="card-icon-badge"><i class="fas fa-leaf"></i></div>
-                        <h5 data-ar="تنسيق الحدائق" data-en="Landscape Design">تنسيق الحدائق</h5>
-                        <p data-ar="تصميم وتنفيذ المساحات الخضراء وتركيب أنظمة الري الحديثة." data-en="Design and implementation of green spaces and modern irrigation systems.">تصميم وتنفيذ المساحات الخضراء وأنظمة الري الحديثة.</p>
+                <div class="service-card h-100 d-flex flex-column border-0 shadow-sm bg-white overflow-hidden" style="border-radius: 12px;">
+                    <div class="card-img-wrapper"><img src="/Styles/Photos/11.jpg" class="card-img-top w-100" style="height: 220px; object-fit: cover;" alt="تنسيق الحدائق"></div>
+                    <div class="card-body-padding p-4 d-flex flex-column flex-grow-1">
+                        <div class="card-icon-badge mb-3"><i class="fas fa-leaf text-secondary fs-4"></i></div>
+                        <h5 class="fw-bold mb-3" data-ar="تنسيق الحدائق" data-en="Landscape Design">تنسيق الحدائق</h5>
+                        <p class="text-muted small mb-4" data-ar="تصميم وتنفيذ المساحات الخضراء وتركيب أنظمة الري الحديثة." data-en="Design of green spaces and irrigation systems.">تصميم وتنفيذ المساحات الخضراء وتركيب أنظمة الري الحديثة لإضفاء لمسة جمالية على المكان.</p>
+                        <a href="https://wa.me/966544425040?text=السلام%20عليكم،%20أود%20طلب%20سعر%20لمشروعي%20(خدمة%20تنسيق%20الحدائق)" class="btn btn-dark mt-auto d-flex align-items-center justify-content-between py-2 px-3 border-0" target="_blank" style="background-color: #1c1c1c;">
+                            <span data-ar="اطلب خدمة" data-en="Order Service">اطلب خدمة</span>
+                            <i class="fas fa-chevron-left small"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+
+            <!-- 12. تبليط الطرق -->
             <div class="col-md-6 col-lg-4 reveal-card" data-delay="550">
-                <div class="service-card">
-                    <div class="card-img-wrapper"><img src="/Styles/Photos/12.jpg" alt="تبليط الطرق"><div class="card-img-overlay-line"></div></div>
-                    <div class="card-body-padding">
-                        <div class="card-icon-badge"><i class="fas fa-road"></i></div>
-                        <h5 data-ar="تبليط وفرش الأسفلت" data-en="Asphalt & Paving">تبليط وفرش الأسفلت</h5>
-                        <p data-ar="تنفيذ طبقات الأسفلت وفرش البلاط الإسمنتي والانترلوك بجودة عالية." data-en="Asphalt layers and interlocking pavement installation with high quality and durability.">تنفيذ طبقات الأسفلت والانترلوك بجودة عالية.</p>
+                <div class="service-card h-100 d-flex flex-column border-0 shadow-sm bg-white overflow-hidden" style="border-radius: 12px;">
+                    <div class="card-img-wrapper"><img src="/Styles/Photos/12.jpg" class="card-img-top w-100" style="height: 220px; object-fit: cover;" alt="تبليط الطرق"></div>
+                    <div class="card-body-padding p-4 d-flex flex-column flex-grow-1">
+                        <div class="card-icon-badge mb-3"><i class="fas fa-road text-secondary fs-4"></i></div>
+                        <h5 class="fw-bold mb-3" data-ar="تبليط وفرش الأسفلت" data-en="Asphalt & Paving">تبليط وفرش الأسفلت</h5>
+                        <p class="text-muted small mb-4" data-ar="تنفيذ طبقات الأسفلت وفرش البلاط الإسمنتي والانترلوك بجودة عالية." data-en="Asphalt layers and interlocking pavement.">تنفيذ طبقات الأسفلت وفرش البلاط الإسمنتي والانترلوك بجودة عالية تضمن المتانة والشكل الجمالي.</p>
+                        <a href="https://wa.me/966544425040?text=السلام%20عليكم،%20أود%20طلب%20سعر%20لمشروعي%20(خدمة%20تبليط%20وفرش%20الأسفلت)" class="btn btn-dark mt-auto d-flex align-items-center justify-content-between py-2 px-3 border-0" target="_blank" style="background-color: #1c1c1c;">
+                            <span data-ar="اطلب خدمة" data-en="Order Service">اطلب خدمة</span>
+                            <i class="fas fa-chevron-left small"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
@@ -407,7 +503,7 @@
             </div>
             <div class="col-lg-6 text-center reveal-right">
                 <div class="why-img-wrapper">
-                    <img src="./Styles/Photos/logo.jpeg" alt="Logo" class="img-fluid rounded-4 shadow-lg" style="opacity:0.9;">
+                    <img src="./Styles/Photos/sec.jpeg" alt="Logo" class="img-fluid rounded-4 shadow-lg" style="opacity:0.9;">
                     <div class="why-img-ring"></div>
                 </div>
             </div>
@@ -536,7 +632,7 @@
     </a>
     
     <!-- 3. Quote (WhatsApp Link) -->
-    <a href="https://wa.me/966544425040?text=السلام%20عليكم،%20أود%20طلب%20عرض%20سعر%20لأحد%20مشاريعكم" target="_blank" class="fab-btn fab-quote" data-tooltip="طلب تسعيرة">
+    <a href="https://wa.me/966544425040?text=السلام%20عليكم،%20أود%20طلب%20سعر%20لمشروعى" target="_blank" class="fab-btn fab-quote" data-tooltip="طلب تسعيرة">
         <i class="fas fa-file-invoice-dollar"></i>
     </a>
 </div>

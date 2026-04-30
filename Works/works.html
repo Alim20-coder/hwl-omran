@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض أعمال حول العمران</title>
+
+    <!-- Bootstrap RTL -->
+    <link id="bootstrap-css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Playfair+Display:wght@700;900&family=Barlow+Condensed:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<script>
+    // هذا الكود يقرأ اللغة المحفوظة فوراً قبل أن يظهر الموقع
+    // يمنع ظهور الموقع بالعربية ثم تغييره للإنجليزية
+    (function() {
+        const savedLang = localStorage.getItem('hawal_lang') || 'ar';
+        const isEn = savedLang === 'en';
+        
+        // ضبط اتجاه الصفحة فوراً
+        document.documentElement.setAttribute('dir', isEn ? 'ltr' : 'rtl');
+        document.documentElement.setAttribute('lang', savedLang);
+        
+        // تغيير ملف الـ Bootstrap فوراً ليتناسب مع الاتجاه
+        // تأكد أن رابط الـ bootstrap لديه id="bootstrap-css"
+        const bsLink = document.getElementById('bootstrap-css');
+        if (bsLink) {
+            bsLink.href = isEn 
+                ? 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css'
+                : 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css';
+        }
+    })();
+</script>
+    <style>
+        :root {
+            /* ─── MONOCHROME PALETTE ─── */
+            --accent-bright: #ffffff;
+            --accent-mid: #e0e0e0;
+            --accent-dim: #a0a0a0;
+            --accent-dark: #444444;
+            
+            /* Backgrounds */
+            --bg-dark: #0F1115;
+            --bg-darker: #000000;
+            --bg-card: #1a1a1a;
+            --bg-main: #F4F4F4;
+            
+            /* Text */
+            --text-light: #ffffff;
+            --text-main: #111111;
+            --text-muted: #888888;
+
+            /* Effects */
+            --border-color: rgba(255, 255, 255, 0.1);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            
+            /* Fonts */
+            --font-ar: "Almarai", sans-serif;
+            --font-en-display: "Playfair Display", serif;
+            --font-en-body: "Barlow Condensed", sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-ar);
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+        
+        /* Global Grayscale Filter */
+        body img {
+            filter: grayscale(100%) contrast(110%); 
+            transition: filter 0.5s ease, transform 0.6s ease;
+        }
+        body img:hover {
+            filter: grayscale(0%) contrast(110%); /* Color on hover */
+        }
+
+        /* RTL/LTR Support */
+        html[lang="en"] body { font-family: var(--font-en-body); letter-spacing: 0.03em; }
+        html[lang="en"] h1, html[lang="en"] h2, html[lang="en"] h3 {
+            font-family: var(--font-en-display);
+            letter-spacing: 0.02em;
+        }
+
+        /* ─── SCROLLBAR ─── */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dark); border-radius: 4px; }
+
+        /* ─── NAVBAR (Simplified) ─── */
+        .navbar {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+        }
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #fff !important;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .brand-icon {
+            width: 35px; height: 35px;
+            background: #fff;
+            border-radius: 4px;
+            display: flex; align-items: center; justify-content: center;
+            color: #000;
+        }
+        .nav-link { color: rgba(255,255,255,0.7) !important; font-weight: 600; transition: 0.3s; }
+        .nav-link:hover { color: #fff !important; }
+        
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--accent-mid);
+            color: var(--accent-bright);
+            padding: 5px 15px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .lang-btn:hover { background: #fff; color: #000; }
+
+        /* ─── HERO SECTION ─── */
+        .page-hero {
+            position: relative;
+            padding: 180px 0 100px;
+            background: var(--bg-dark);
+            overflow: hidden;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000 100%);
+            opacity: 0.8;
+        }
+        .hero-content { position: relative; z-index: 2; }
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .hero-desc {
+            font-size: 1.1rem;
+            color: #aaa;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        /* ─── FILTER BUTTONS ─── */
+        .filter-container {
+            margin-bottom: 50px;
+            display: flex; flex-wrap: wrap; gap: 10px;
+            justify-content: center;
+        }
+        .filter-btn {
+            background: transparent;
+            border: 1px solid #ccc;
+            color: var(--text-main);
+            padding: 8px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: var(--font-ar);
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        html[lang="en"] .filter-btn { font-family: var(--font-en-body); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: #000;
+            border-color: #000;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* ─── PROJECT CARDS ─── */
+        .portfolio-grid { padding-bottom: 100px; }
+        
+        .portfolio-item {
+            margin-bottom: 30px;
+            /* Animation logic handled by JS adding classes */
+        }
+        .portfolio-item.hide { display: none; }
+        .portfolio-item.show { display: block; animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .project-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+            height: 100%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: #999;
+        }
+
+        .thumb-wrap {
+            height: 260px;
+            overflow: hidden;
+            position: relative;
+        }
+        .thumb-wrap img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        .project-card:hover .thumb-wrap img {
+            transform: scale(1.1);
+            filter: grayscale(0%) contrast(110%);
+        }
+
+        .card-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%);
+            opacity: 0.8;
+            transition: 0.4s;
+        }
+
+        .category-badge {
+            position: absolute;
+            top: 15px;
+            background: #fff;
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 5;
+        }
+        html[dir="rtl"] .category-badge { right: 15px; }
+        html[dir="ltr"] .category-badge { left: 15px; }
+
+        .card-body { padding: 25px; position: relative; background: #fff; z-index: 2; }
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        .project-excerpt {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            font-size: 0.8rem;
+            color: #888;
+            font-weight: 600;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: #000;
+            color: #777;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+        footer a { color: #fff; text-decoration: none; transition: 0.3s; }
+        footer a:hover { color: var(--accent-mid); }
+
+        @media (max-width: 768px) {
+            .page-hero { padding-top: 140px; text-align: center; }
+            .hero-desc { margin: 0 auto; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <div class="brand-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+            <span data-ar="حول العمران" data-en="Hawal Al-Omran">حول العمران</span>
+        </a>
+         <li class="nav-item"><a class="nav-link" href="../index.html" data-ar="الذهاب للرئيسية" data-en="Go to Home">الذهاب للرئيسية</a></li>
+
+        <div class="d-flex align-items-center gap-3">
+            <button onclick="toggleLang()" class="lang-btn">
+                <span id="langBtnText">EN</span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="page-hero" id="home">
+    <div class="container hero-content">
+        <div class="row">
+            <div class="col-lg-8" data-aos="fade-up">
+                <h4 style="color: #888; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;" data-ar="معرض الأعمال" data-en="Portfolio">معرض الأعمال</h4>
+                <h1 class="hero-title" data-ar="نصنع المستقبل بأيدينا" data-en="We Build the Future with Our Hands">نصنع المستقبل بأيدينا</h1>
+                <p class="hero-desc" data-ar="جولة مختارة في أبرز مشاريعنا المنجزة. من الأساسات الخرسانية المتينة إلى التشطيبات المعمارية الدقيقة، كل صورة تحكي قصة جودة والتزام." data-en="A curated tour of our most prominent completed projects. From solid concrete foundations to precise architectural finishes, every image tells a story of quality and commitment.">
+                    جولة مختارة في أبرز مشاريعنا المنجزة. من الأساسات الخرسانية المتينة إلى التشطيبات المعمارية الدقيقة، كل صورة تحكي قصة جودة والتزام.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PORTFOLIO GRID -->
+<section class="portfolio-grid">
+    <div class="container">
+        
+        <!-- Filters -->
+        <div class="filter-container" data-aos="fade-up">
+            <button class="filter-btn active" data-filter="all" data-ar="الكل" data-en="All">الكل</button>
+            <button class="filter-btn" data-filter="foundation" data-ar="أساسات" data-en="Foundations">أساسات</button>
+            <button class="filter-btn" data-filter="finishing" data-ar="تشطيبات" data-en="Finishing">تشطيبات</button>
+            <button class="filter-btn" data-filter="infrastructure" data-ar="بنية تحتية" data-en="Infrastructure">بنية تحتية</button>
+            <button class="filter-btn" data-filter="residential" data-ar="سكني" data-en="Residential">سكني</button>
+            <button class="filter-btn" data-filter="commercial" data-ar="تجاري" data-en="Commercial">تجاري</button>
+            <button class="filter-btn" data-filter="steel" data-ar="حديد" data-en="Steel">حديد</button>
+        </div>
+
+        <!-- Grid -->
+        <div class="row g-4" id="portfolioGrid">
+
+            <!-- Item 1: Foundations -->
+            <div class="col-lg-4 col-md-6 portfolio-item show" data-category="foundation" data-aos="fade-up">
+                <div class="project-card">
+                    <div class="thumb-wrap">
+                        <span class="category-badge" data-ar="أساسات" data-en="Foundations">أساسات</span>
+                        <div class="card-overlay"></div>
+                        <img src="https://images.unsplash.com/photo-1591189698480-6b2317b627e4?auto=format&fit=crop&w=800&q=80" alt="Foundation">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="project-title" data-ar="قواعد خرسانية لمجمع سكني" data-en="Concrete Bases for Residential Complex">قواعد خرسانية لمجمع سكني</h3>
+                        <p class="project-excerpt" data-ar="تنفيذ قواعد مسلحة ونقلات للأساسات باستخدام خرسانة معتمدة مختبرياً لضمان تحمل الأحمال الإنشائية." data-en="Execution of reinforced bases and foundation transfers using lab-approved concrete to ensure structural load bearing capacity.">تنفيذ قواعد مسلحة ونقلات للأساسات باستخدام خرسانة معتمدة مختبرياً لضمان تحمل الأحمال الإنشائية.</p>
+                        <div class="project-meta">
+                            <span data-ar="الرياض، السعودية" data-en="Riyadh, KSA">الرياض، السعودية</span>
+                            <span><i class="fa-regular fa-calendar"></i> 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2: Finishing -->
+            <div class="col-lg-4 col-md-6 portfolio-item show" data-category="finishing" data-aos="fade-up" data-aos-delay="100">
+                <div class="project-card">
+                    <div class="thumb-wrap">
+                        <span class="category-badge" data-ar="تشطيبات" data-en="Finishing">تشطيبات</span>
+                        <div class="card-overlay"></div>
+                        <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=800&q=80" alt="Finishing">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="project-title" data-ar="فيلا مودرن - تشطيب سوبر لوكس" data-en="Modern Villa - Super Luxury Finish">فيلا مودرن - تشطيب سوبر لوكس</h3>
+                        <p class="project-excerpt" data-ar="تطبيق كامل للتشطيبات الداخلية والخارجية تشمل الجبس بورد، دهانات إيطالية، ورخام طبيعي." data-en="Full application of interior and exterior finishes including gypsum board, Italian paints, and natural marble.">تطبيق كامل للتشطيبات الداخلية والخارجية تشمل الجبس بورد، دهانات إيطالية، ورخام طبيعي.</p>
+                        <div class="project-meta">
+                            <span data-ar="جدة، السعودية" data-en="Jeddah, KSA">جدة، السعودية</span>
+                            <span><i class="fa-regular fa-calendar"></i> 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3: Infrastructure -->
+            <div class="col-lg-4 col-md-6 portfolio-item show" data-category="infrastructure" data-aos="fade-up" data-aos-delay="200">
+                <div class="project-card">
+                    <div class="thumb-wrap">
+                        <span class="category-badge" data-ar="بنية تحتية" data-en="Infrastructure">بنية تحتية</span>
+                        <div class="card-overlay"></div>
+                        <img src="https://images.unsplash.com/photo-1590856029826-c7a73142bbf1?auto=format&fit=crop&w=800&q=80" alt="Infrastructure">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="project-title" data-ar="شبكات صرف صحي ومياه" data-en="Sewage & Water Networks">شبكات صرف صحي ومياه</h3>
+                        <p class="project-excerpt" data-ar="تمديد شبكات underground لمخطط جديد يشمل أنابيب PVC والخرسانات للغرف التفتيش." data-en="Underground network extension for a new plan including PVC pipes and concrete for inspection chambers.">تمديد شبكات underground لمخطط جديد يشمل أنابيب PVC والخرسانات للغرف التفتيش.</p>
+                        <div class="project-meta">
+                            <span data-ar="الدمام، السعودية" data-en="Dammam, KSA">الدمام، السعودية</span>
+                            <span><i class="fa-regular fa-calendar"></i> 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 4: Residential -->
+            <div class="col-lg-4 col-md-6 portfolio-item show" data-category="residential" data-aos="fade-up">
+                <div class="project-card">
+                    <div class="thumb-wrap">
+                        <span class="category-badge" data-ar="سكني" data-en="Residential">سكني</span>
+                        <div class="card-overlay"></div>
+                        <img src="https://images.unsplash.com/photo-1600596542815-e32c9ec36ef1?auto=format&fit=crop&w=800&q=80" alt="Residential">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="project-title" data-ar="مجمع سكني متكامل - تشييد" data-en="Integrated Residential Complex">مجمع سكني متكامل - تشييد</h3>
+                        <p class="project-excerpt" data-ar="تنفيذ هيكل إنشائي كامل لـ 6 فيلات دوبلكس مع الخدمات والطرق الداخلية." data-en="Full structural execution for 6 duplex villas with services and internal roads.">تنفيذ هيكل إنشائي كامل لـ 6 فيلات دوبلكس مع الخدمات والطرق الداخلية.</p>
+                        <div class="project-meta">
+                            <span data-ar="الرياض، السعودية" data-en="Riyadh, KSA">الرياض، السعودية</span>
+                            <span><i class="fa-regular fa-calendar"></i> 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 5: Commercial -->
+            <div class="col-lg-4 col-md-6 portfolio-item show" data-category="commercial" data-aos="fade-up" data-aos-delay="100">
+                <div class="project-card">
+                    <div class="thumb-wrap">
+                        <span class="category-badge" data-ar="تجاري" data-en="Commercial">تجاري</span>
+                        <div class="card-overlay"></div>
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Commercial">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="project-title" data-ar="برج إداري - واجهات زجاجية" data-en="Office Tower - Glass Facades">برج إداري - واجهات زجاجية</h3>
+                        <p class="project-excerpt" data-ar="تركيب واجهات curtian wall ومقرنات الألمنيوم لمبنى تجاري مكون من 10 طوابق." data-en="Installation of curtain wall facades and aluminum fittings for a 10-story commercial building.">تركيب واجهات curtian wall ومقرنات الألمنيوم لمبنى تجاري مكون من 10 طوابق.</p>
+                        <div class="project-meta">
+                            <span data-ar="الخبر، السعودية" data-en="Al Khobar, KSA">الخبر، السعودية</span>
+                            <span><i class="fa-regular fa-calendar"></i> 2022</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 6: Steel -->
+            <div class="col-lg-4 col-md-6 portfolio-item show" data-category="steel" data-aos="fade-up" data-aos-delay="200">
+                <div class="project-card">
+                    <div class="thumb-wrap">
+                        <span class="category-badge" data-ar="هياكل معدنية" data-en="Steel Structures">هياكل معدنية</span>
+                        <div class="card-overlay"></div>
+                        <img src="https://images.unsplash.com/photo-1503376763036-066120622c74?auto=format&fit=crop&w=800&q=80" alt="Steel">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="project-title" data-ar="مستودع صناعي عالي المساحة" data-en="High-Capacity Industrial Warehouse">مستودع صناعي عالي المساحة</h3>
+                        <p class="project-excerpt" data-ar="تصنيع وتركيب هياكل حديدية ثقيلة بمساحة 5000 متر مربع مع عزل حراري." data-en="Manufacturing and installation of heavy steel structures over 5000 sqm with thermal insulation.">تصنيع وتركيب هياكل حديدية ثقيلة بمساحة 5000 متر مربع مع عزل حراري.</p>
+                        <div class="project-meta">
+                            <span data-ar="جدة، السعودية" data-en="Jeddah, KSA">جدة، السعودية</span>
+                            <span><i class="fa-regular fa-calendar"></i> 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Item 7: Excavation -->
+             <div class="col-lg-4 col-md-6 portfolio-item show" data-category="foundation" data-aos="fade-up">
+                <div class="project-card">
+                    <div class="thumb-wrap">
+                        <span class="category-badge" data-ar="حفريات" data-en="Excavation">حفريات</span>
+                        <div class="card-overlay"></div>
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80" alt="Excavation">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="project-title" data-ar="أعمال حفر وتسوية" data-en="Excavation & Leveling Works">أعمال حفر وتسوية</h3>
+                        <p class="project-excerpt" data-ar="استخدام معدات ثقيلة لحفر موقع لمساحة 10000 متر مربع وتسوية الأرض للبدء في الإنشاء." data-en="Using heavy equipment to excavate a 10,000 sqm site and leveling the ground for construction start.">استخدام معدات ثقيلة لحفر موقع لمساحة 10000 متر مربع وتسوية الأرض للبدء في الإنشاء.</p>
+                        <div class="project-meta">
+                            <span data-ar="الرياض، السعودية" data-en="Riyadh, KSA">الرياض، السعودية</span>
+                            <span><i class="fa-regular fa-calendar"></i> 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 8: Electrical -->
+            <div class="col-lg-4 col-md-6 portfolio-item show" data-category="commercial" data-aos="fade-up" data-aos-delay="100">
+                <div class="project-card">
+                    <div class="thumb-wrap">
+                        <span class="category-badge" data-ar="كهرباء" data-en="Electrical">كهرباء</span>
+                        <div class="card-overlay"></div>
+                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80" alt="Electrical">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="project-title" data-ar="لوحات توزيع رئيسية" data-en="Main Distribution Panels">لوحات توزيع رئيسية</h3>
+                        <p class="project-excerpt" data-ar="تأسيس كهرباء لمجمع تجاري يشمل تركيب MDPs والتمديدات الأرضية." data-en="Electrical grounding for a commercial complex including installation of MDPs and underground extensions.">تأسيس كهرباء لمجمع تجاري يشمل تركيب MDPs والتمديدات الأرضية.</p>
+                        <div class="project-meta">
+                            <span data-ar="جدة، السعودية" data-en="Jeddah, KSA">جدة، السعودية</span>
+                            <span><i class="fa-regular fa-calendar"></i> 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 9: Landscape -->
+            <div class="col-lg-4 col-md-6 portfolio-item show" data-category="residential" data-aos="fade-up" data-aos-delay="200">
+                <div class="project-card">
+                    <div class="thumb-wrap">
+                        <span class="category-badge" data-ar="لاندسكيب" data-en="Landscape">لاندسكيب</span>
+                        <div class="card-overlay"></div>
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80" alt="Landscape">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="project-title" data-ar="تنسيق حدائق قصر" data-en="Palace Garden Landscaping">تنسيق حدائق قصر</h3>
+                        <p class="project-excerpt" data-ar="تصميم وتنفيذ حدائق واسعة مع نظام ري بالتنقيط وإنشاء بحيرة صناعية." data-en="Design and execution of extensive gardens with drip irrigation system and artificial lake creation.">تصميم وتنفيذ حدائق واسعة مع نظام ري بالتنقيط وإنشاء بحيرة صناعية.</p>
+                        <div class="project-meta">
+                            <span data-ar="الرياض، السعودية" data-en="Riyadh, KSA">الرياض، السعودية</span>
+                            <span><i class="fa-regular fa-calendar"></i> 2022</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <p>© 2024 <span data-ar="حول العمران للمقاولات العامة" data-en="Hawal Al-Omran Contracting">حول العمران للمقاولات العامة</span>.</p>
+        <div class="mt-2">
+            <a href="#" class="mx-2"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="mx-2"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="mx-2"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+    // Init Animations
+    AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true });
+
+    // Filter Logic
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.portfolio-item');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Active State
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+            
+            // Filter Items
+            items.forEach((item, index) => {
+                // Reset animation
+                item.classList.remove('show');
+                item.classList.add('hide');
+
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    setTimeout(() => {
+                        item.classList.remove('hide');
+                        item.classList.add('show');
+                    }, index * 100); // Staggered delay for cool effect
+                }
+            });
+        });
+    });
+
+    
+    // =====================================================
+    // LOGIC OF LANGUAGE BUTTON (يوضع في نهاية البدي)
+    // =====================================================
+
+    let currentLang = 'ar'; // اللغة الافتراضية إذا لم يتم حفظ شيء
+
+    // 1. عند تحميل الصفحة: قراءة اللغة المحفوظة لتحديث النصوص فقط
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem('hawal_lang');
+        if (savedLang) {
+            currentLang = savedLang;
+            updateTexts(currentLang); // تحديث النصوص فقط (الاتجاه تم تغييره في الهيد)
+        }
+    });
+
+    // 2. دالة تغيير اللغة عند الضغط على الزر
+    function toggleLang() {
+        currentLang = currentLang === 'ar' ? 'en' : 'ar';
+        
+        // حفظ اللغة
+        localStorage.setItem('hawal_lang', currentLang);
+        
+        // تطبيق التغييرات فوراً
+        applyFullLangUpdate(currentLang);
+    }
+
+    // 3. دالة تحديث كل شيء (الاتجاه والنصوص والـ CSS)
+    function applyFullLangUpdate(lang) {
+        const isEn = lang === 'en';
+        const html = document.documentElement;
+
+        // تحديث اتجاه الصفحة واللغة
+        html.setAttribute('lang', lang);
+        html.setAttribute('dir', isEn ? 'ltr' : 'rtl');
+
+        // تحديث نصوص الأزرار
+        const btns = document.querySelectorAll('#langBtnText, #langBtnMobile');
+        btns.forEach(btn => {
+            if (btn) btn.textContent = isEn ? 'AR' : 'EN';
+        });
+
+        // تحديث النصوص داخل الصفحة
+        updateTexts(lang);
+
+        // تبديل ملف الـ Bootstrap
+        const bsLink = document.getElementById('bootstrap-css');
+        if (bsLink) {
+            bsLink.href = isEn
+                ? 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css'
+                : 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css';
+        }
+    }
+
+    // دالة مساعدة لتغيير النصوص فقط
+    function updateTexts(lang) {
+        const isEn = lang === 'en';
+        document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+            const text = isEn ? el.dataset.en : el.dataset.ar;
+            if (!text) return;
+
+            if (el.children.length === 0) {
+                el.textContent = text;
+            } else {
+                // التعامل مع العناصر التي تحتوي على أبناء (مثل الأيقونات داخل الزر)
+                el.childNodes.forEach(node => {
+                    if (node.nodeType === 3 && node.textContent.trim()) {
+                        node.textContent = text;
+                    }
+                });
+            }
+        });
+    }
+</script>
+</body>
+</html>

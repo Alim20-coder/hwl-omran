@@ -353,58 +353,80 @@ document.addEventListener('DOMContentLoaded', function () {
 // =====================================================
 // LANGUAGE TOGGLE — GLOBAL FUNCTION
 // =====================================================
-let currentLang = 'ar';
+  // 1. تحديد مفتاح التخزين الموحد
+  
+    // =====================================================
+    // LOGIC OF LANGUAGE BUTTON (يوضع في نهاية البدي)
+    // =====================================================
 
-function toggleLang() {
-  currentLang = currentLang === 'ar' ? 'en' : 'ar';
-  const html = document.documentElement;
-  const isEn = currentLang === 'en';
+    let currentLang = 'ar'; // اللغة الافتراضية إذا لم يتم حفظ شيء
 
-  // Update html attributes
-  html.setAttribute('lang', currentLang);
-  html.setAttribute('dir', isEn ? 'ltr' : 'rtl');
-
-  // Update lang button texts
-  const btnText = document.getElementById('langBtnText');
-  const btnMobile = document.getElementById('langBtnMobile');
-  if (btnText) btnText.textContent = isEn ? 'AR' : 'EN';
-  if (btnMobile) btnMobile.textContent = isEn ? 'AR' : 'EN';
-
-  // Update page title
-  document.title = isEn
-    ? 'Hawal Al-Omran Contracting'
-    : 'حول العمران للمقاولات العامة';
-
-  // Translate all elements with data-ar / data-en
-  const translatables = document.querySelectorAll('[data-ar][data-en]');
-  translatables.forEach(el => {
-    const text = isEn ? el.dataset.en : el.dataset.ar;
-    if (!text) return;
-
-    // If element has children (not just text), update innerHTML carefully
-    if (el.children.length === 0) {
-      el.textContent = text;
-    } else {
-      // For mixed content, just update text content of the element itself
-      // without touching child elements
-      el.childNodes.forEach(node => {
-        if (node.nodeType === 3 && node.textContent.trim()) {
-          node.textContent = text;
+    // 1. عند تحميل الصفحة: قراءة اللغة المحفوظة لتحديث النصوص فقط
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem('hawal_lang');
+        if (savedLang) {
+            currentLang = savedLang;
+            updateTexts(currentLang); // تحديث النصوص فقط (الاتجاه تم تغييره في الهيد)
         }
-      });
-    }
-  });
+    });
 
-  // Update Bootstrap RTL/LTR stylesheet
-  const bsLink = document.querySelector('link[href*="bootstrap"]');
-  if (bsLink) {
-    if (isEn) {
-      bsLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css';
-    } else {
-      bsLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css';
+    // 2. دالة تغيير اللغة عند الضغط على الزر
+    function toggleLang() {
+        currentLang = currentLang === 'ar' ? 'en' : 'ar';
+        
+        // حفظ اللغة
+        localStorage.setItem('hawal_lang', currentLang);
+        
+        // تطبيق التغييرات فوراً
+        applyFullLangUpdate(currentLang);
     }
-  }
 
+    // 3. دالة تحديث كل شيء (الاتجاه والنصوص والـ CSS)
+    function applyFullLangUpdate(lang) {
+        const isEn = lang === 'en';
+        const html = document.documentElement;
+
+        // تحديث اتجاه الصفحة واللغة
+        html.setAttribute('lang', lang);
+        html.setAttribute('dir', isEn ? 'ltr' : 'rtl');
+
+        // تحديث نصوص الأزرار
+        const btns = document.querySelectorAll('#langBtnText, #langBtnMobile');
+        btns.forEach(btn => {
+            if (btn) btn.textContent = isEn ? 'AR' : 'EN';
+        });
+
+        // تحديث النصوص داخل الصفحة
+        updateTexts(lang);
+
+        // تبديل ملف الـ Bootstrap
+        const bsLink = document.getElementById('bootstrap-css');
+        if (bsLink) {
+            bsLink.href = isEn
+                ? 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css'
+                : 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css';
+        }
+    }
+
+    // دالة مساعدة لتغيير النصوص فقط
+    function updateTexts(lang) {
+        const isEn = lang === 'en';
+        document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+            const text = isEn ? el.dataset.en : el.dataset.ar;
+            if (!text) return;
+
+            if (el.children.length === 0) {
+                el.textContent = text;
+            } else {
+                // التعامل مع العناصر التي تحتوي على أبناء (مثل الأيقونات داخل الزر)
+                el.childNodes.forEach(node => {
+                    if (node.nodeType === 3 && node.textContent.trim()) {
+                        node.textContent = text;
+                    }
+                });
+            }
+        });
+    }
   // Smooth lang transition effect
   document.body.style.opacity = '0';
   document.body.style.transition = 'opacity 0.25s';
@@ -423,4 +445,3 @@ function toggleLang() {
       }
     });
   }, 300);
-}

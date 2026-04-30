@@ -9,7 +9,7 @@
   --accent: #c8c8c8;
   --accent-bright: #ffffff;
   --silver: #d0d0d0;
-  --silver-dark: #606060;
+  --silver-dark: #4d4b4b;
   --charcoal: #1c1c1c;
   --charcoal-mid: #2a2a2a;
 
@@ -45,7 +45,7 @@ body {
   color: #fff;
 }
 
-.text-accent { color: var(--silver) !important; }
+.text-accent { color: var(--silver-dark) !important; }
 .bg-custom-dark { background-color: var(--bg-dark) !important; }
 .bg-custom-section { background-color: var(--bg-section) !important; }
 .ltr-text { direction: ltr; display: inline-block; }
@@ -508,7 +508,7 @@ section {
 }
 .about-badge {
   position: absolute;
-  bottom: 30px;
+  bottom: -50px;
   left: -20px;
   background: var(--charcoal);
   color: #fff;
@@ -884,7 +884,7 @@ footer {
   .hero-title .line-accent { font-size: 3rem; }
   .hero-title .line-1 { font-size: 2rem; }
   .why-box { flex-direction: column; text-align: center; align-items: center; }
-  .about-badge { left: 10px; }
+  .about-badge { left: 20px;        margin-bottom: -45px; }
   body { cursor: auto; }
   .custom-cursor, .custom-cursor-dot { display: none; }
 }
@@ -892,7 +892,7 @@ footer {
   section { padding: 70px 0; }
   .hero-title .line-accent { font-size: 2.4rem; }
   .btn-primary, .btn-outline-light { width: 100%; margin-bottom: 10px; }
-  .about-badge { position: relative; left: 0; margin-top: 16px; display: inline-block; }
+  .about-badge { position: relative; left: 0; top:-20px; margin-top: 10px; display: inline-block; }
 }
 
 /* ===== ENGLISH MODE ===== */
